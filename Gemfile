@@ -1,31 +1,38 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.7'
+gem 'rake', '0.8.7'         # remove this line when rails 3.1
+gem 'mysql2', '= 0.2.7'     # version needed for rails 3.0
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'jquery-rails', '>= 0.2.6'
+gem 'haml'
 
-gem 'mysql2'
+gem 'capistrano'
 
-# Use unicorn as the web server
-# gem 'unicorn'
+# Gem gives easy translating helpers and translates models
+gem 'r18n-rails'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+# Gem adds locale to each route
+gem 'translate_routes'
 
-# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-# gem 'ruby-debug'
-# gem 'ruby-debug19', :require => 'ruby-debug'
+# auth gem
+gem 'devise'
 
-# Bundle the extra gems:
-# gem 'bj'
+# gem for aploading files, that mus belongs to models
+gem 'paperclip', '~> 2.3'
+
+# Magic gem for parsing and building XML and HTML
 # gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
 
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+
+# Testing gems
+group :development, :test do
+  gem "rspec-rails"
+  gem "cucumber-rails"
+  gem 'webrat'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+end

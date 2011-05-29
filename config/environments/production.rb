@@ -37,6 +37,7 @@ Morsbox::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.default_url_options = {:host => 'morsbox.ru'}
   # Enable threaded mode
   # config.threadsafe!
 
@@ -46,4 +47,7 @@ Morsbox::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  # The path where that ImageMagick is installed
+  # Paperclip.options[:command_path] = "/usr/bin/"
 end
