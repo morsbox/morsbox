@@ -5,7 +5,7 @@ Feature: introducing our sections
   So it helps to understand, will they be able to do my problem
   
   Background:
-    Given static block with alias "home" and text "Главная страница"
+    Given static block with name "home" and text "Главная страница"
     And section with name "Лого"
     And section with name "Стиль"
 
@@ -16,7 +16,7 @@ Feature: introducing our sections
     And I should see "Стиль" within ".menu"
   
   Scenario: changing locale
-    Given page block with alias "home" has english text "Home page"
+    Given page block with name "home" has english text "Home page"
     And section with name "Лого" has english name "Logo"
     And section with name "Стиль" has english name "Style"
     When I go to the home page
