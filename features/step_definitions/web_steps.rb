@@ -209,3 +209,11 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+Then /^I should see element "([^"]*)"$/ do |element|
+  page.should have_selector(element)
+end
+
+Then /^I should not see element "([^"]*)"$/ do |element|
+  page.should have_no_selector(element)
+end
