@@ -1,3 +1,4 @@
+@wip
 Feature: enter admin zone
   As a admin
   I want to have admin zone

@@ -18,4 +18,42 @@ describe PagesController do
     end
   end
 
+  # Layout tested here, because without controller tests are invalid
+  describe "in layouts/application.html.haml" do
+    render_views
+    let(:section1){mock_model(Section, :name=>"Logo", :id => 5).as_null_object}
+    let(:section2){mock_model(Section, :name=>"Web", :id => 7).as_null_object}
+    before :each do
+      Section.stub(:enabled).and_return [section1,section2]
+      get :index, :locale => 'en'
+    end
+      
+    describe "menu" do
+      it "shows menu" do
+        response.should have_selector("ul.menu")
+      end
+      
+      it "shows sections within menu" do
+        response.should contain("Logo")
+        response.should contain("Web")
+      end
+      
+      it "shows links to section within menu" do
+        response.should have_selector(".menu a", :href => section_path(section1))
+        response.should have_selector(".menu a", :href => section_path(section2))
+      end
+    end
+    
+    describe "locales_menu" do
+      it "shows locales menu" do
+        response.should have_selector(".locales_menu")
+      end
+      
+      it "shows links for all supported languages" do
+        response.should have_selector("#switch_to_locale_cs")
+        response.should have_selector("#switch_to_locale_en")
+        response.should have_selector("#switch_to_locale_ru")
+      end
+    end
+  end
 end
