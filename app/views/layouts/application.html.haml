@@ -8,6 +8,9 @@
   %body
     #notice= notice
     #alert= alert
+    %ul.menu
+      - @sections.each do |section|
+        %li= link_to section.name, section_path(section)
     = yield
 
 

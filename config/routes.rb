@@ -1,5 +1,5 @@
 Morsbox::Application.routes.draw do
-  
+  resources :sections, :only => :show
   root :to => "pages#index"
 end
 
