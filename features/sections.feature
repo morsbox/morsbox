@@ -1,4 +1,3 @@
-@wip
 Feature: introducing our sections
   As a potential client
   I want to know about activity of Morsbox
@@ -15,14 +14,15 @@ Feature: introducing our sections
     And I should see "Лого" within ".menu"
     And I should see "Стиль" within ".menu"
   
+  @wip
   Scenario: changing locale
-    Given page block with name "home" has english text "Home page"
+    Given static block with name "home" has english text "Home page"
     And section with name "Лого" has english name "Logo"
     And section with name "Стиль" has english name "Style"
     When I go to the home page
     Then I should see element "#switch_to_locale_en"
     
-    When I click "switch_to_locale_en"
+    When I follow "switch_to_locale_en"
     Then I should see "Home page"
     And I should see "Logo" within ".menu"
     And I should see "Style" within ".menu"
