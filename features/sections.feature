@@ -13,8 +13,7 @@ Feature: introducing our sections
     Then I should see "Главная страница"
     And I should see "Лого" within ".menu"
     And I should see "Стиль" within ".menu"
-  
-  @wip
+
   Scenario: changing locale
     Given static block with name "home" has english text "Home page"
     And section with name "Лого" has english name "Logo"

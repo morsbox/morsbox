@@ -11,6 +11,7 @@
     %ul.menu
       - @sections.each do |section|
         %li= link_to section.name, section_path(section)
+    %ul.locales_menu
+      - r18n.available_locales.each do |loc|
+        %li=link_to loc.title,url_for(:locale=>loc.code),:id => "switch_to_locale_#{loc.code}"
     = yield
-
-
