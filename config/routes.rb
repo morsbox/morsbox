@@ -1,4 +1,6 @@
 Morsbox::Application.routes.draw do
+  devise_for :admins
+
   resources :sections, :only => :show
   root :to => "pages#index"
 end
