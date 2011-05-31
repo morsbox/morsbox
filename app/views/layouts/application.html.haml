@@ -14,4 +14,8 @@
     %ul.locales_menu
       - r18n.available_locales.each do |loc|
         %li=link_to loc.title,url_for(:locale=>loc.code),:id => "switch_to_locale_#{loc.code}"
+    - if admin_signed_in?
+      %ul.admin_menu
+        %li= link_to t.admin.profile, edit_admin_registration_path, :id => "admin_edit"
+        %li= link_to t.admin.logout, destroy_admin_session_path, :id => "admin_logout"
     = yield
