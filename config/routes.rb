@@ -1,5 +1,9 @@
 Morsbox::Application.routes.draw do
   devise_for :admins
+  
+  namespace 'admin' do
+    root :to => "index#index"
+  end
 
   resources :sections, :only => :show
   root :to => "pages#index"
