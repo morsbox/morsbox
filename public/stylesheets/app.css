@@ -1,0 +1,97 @@
+html {
+  height: 100%;
+}
+
+body {
+  background: #6c6c6c;
+  height: 100%;
+}
+
+div#container {
+  background: #ffffff;
+  min-width: 1000px;
+  max-width: 1300px;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+#left_dark {
+  position:fixed;
+  width: 160px;
+  background: #36332e;
+  height: 100%;
+}
+
+#left_light {
+  position:fixed;
+  margin-left:180px;
+  width: 150px;
+  height: 100%;
+}
+
+a#logo {
+  display: block;
+  height:160px;
+  background: url('../images/morsbox2.png') center center no-repeat;
+}
+
+a#logo:hover, a#logo.selected {
+  background: url('../images/morsbox1.png') center center no-repeat;
+}
+
+#left_dark ul, #left_light ul {
+  margin: 0 0 30px 0;
+  padding:0;
+  list-style-type: none;
+}
+
+li.separated {
+  padding-top:30px;
+}
+
+#left_dark li {
+  text-align:center;
+}
+
+#left_dark li a {
+  color: #bfbfbf;
+  text-decoration: none;
+}
+
+#left_dark li a:hover, #left_dark li.selected a {
+  color: #fefefe;
+}
+
+#left_light ul {
+  margin-top: 160px;
+}
+
+#left_light li a {
+  color: #000000;
+  text-decoration: none;
+}
+
+#left_light li a:hover, #left_light li.selected a {
+  color: #ababab;
+}
+
+#content {
+  padding: 44px 10px 0 10px;
+}
+
+#content.narrow {
+  margin-left: 340px;
+}
+
+#content.wide {
+  margin-left: 170px;
+}
+
+#content .image_container{
+  margin-bottom:17px;
+}
+
+#content .description_container{
+  min-width: 640px;
+  margin:0 70px 30px 0;
+}
