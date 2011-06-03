@@ -17,6 +17,9 @@ module NavigationHelpers
     when /the sign in page/
       '/admins/sign_in'
 
+    when /the page of section "([^"]*)"/
+      section_path Section.find_by_name_ru($1)
+      
     else
       begin
         page_name =~ /^the (.*) page$/

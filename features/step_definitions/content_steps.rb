@@ -24,3 +24,7 @@ Given /^project "([^"]*)" has following descriptions:$/ do |project_name, descri
     project.descriptions << Factory(:description, description)
   end
 end
+
+Given /^project with name "([^"]*)" has english name "([^"]*)"$/ do |name_ru, name_en|
+  Project.find_by_name_ru(name_ru).update_attributes :name_en => name_en
+end
