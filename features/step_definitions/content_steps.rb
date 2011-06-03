@@ -13,3 +13,7 @@ end
 Given /^section with name "([^"]*)" has english name "([^"]*)"$/ do |name_ru, name_en|
   Section.find_by_name_ru(name_ru).update_attributes :name_en => name_en
 end
+
+Given /^section "([^"]*)" has project with name "([^"]*)"$/ do |section_name, name|
+  Section.find_by_name_ru(section_name).projects << Factory :project, :name_ru => name
+end

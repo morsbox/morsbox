@@ -8,7 +8,7 @@ Feature: introducing our sections
     And section with name "Лого"
     And section with name "Стиль"
 
-  Scenario: enter homepage
+  Scenario: visit homepage
     When I go to the home page
     Then I should see "Главная страница"
     And I should see "Лого" within ".menu"
