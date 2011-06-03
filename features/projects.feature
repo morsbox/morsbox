@@ -1,4 +1,3 @@
-@wip
 Feature: introducing our projects
   As a potential client
   I want to see their works
@@ -23,6 +22,7 @@ Feature: introducing our projects
     And I should see "Арбуз" within ".projects_menu"
     And I should see "Черешня" within ".projects_menu"
   
+  @wip
   Scenario: visit project
     Given I am on the page of section "Лого"
     When I follow "Черешня"
@@ -36,6 +36,7 @@ Feature: introducing our projects
     And I should see element "img[src~='demo.jpg']"
     And I should see element "img[src~='demo2.jpg']"
   
+  @wip
   Scenario: changing locale
     Given project with name "Арбуз" has english name "Watermelon"
     And project with name "Черешня" has english name "Cherry"

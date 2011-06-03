@@ -32,16 +32,6 @@ describe PagesController do
       it "shows menu" do
         response.should have_selector("ul.menu")
       end
-      
-      it "shows sections within menu" do
-        response.should contain("Logo")
-        response.should contain("Web")
-      end
-      
-      it "shows links to section within menu" do
-        response.should have_selector(".menu a", :href => section_path(section1))
-        response.should have_selector(".menu a", :href => section_path(section2))
-      end
     end
     
     describe "locales_menu" do

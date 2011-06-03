@@ -13,7 +13,7 @@ describe "sections/_projects_menu.html.haml" do
     rendered.should contain("Project 2")
   end
   
-  it "shows links to given sprojects" do
+  it "shows links to given projects" do
     render
     rendered.should have_selector("a", :href => project_path(project1))
     rendered.should have_selector("a", :href => project_path(project2))

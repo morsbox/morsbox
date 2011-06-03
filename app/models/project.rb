@@ -5,4 +5,6 @@ class Project < ActiveRecord::Base
   validates :name_ru, :presence => true
   belongs_to :section
   has_many :descriptions
+  
+  scope :enabled, where(:enabled=>true).order("show_order DESC",:created_at)
 end
