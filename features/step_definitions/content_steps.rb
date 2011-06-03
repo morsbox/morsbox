@@ -17,3 +17,10 @@ end
 Given /^section "([^"]*)" has project with name "([^"]*)"$/ do |section_name, name|
   Section.find_by_name_ru(section_name).projects << Factory(:project, :name_ru => name)
 end
+
+Given /^project "([^"]*)" has following descriptions:$/ do |project_name, descriptions|
+  project = Project.find_by_name_ru(project_name)
+  descriptions.hashes.each do |description|
+    project.descriptions << Factory(:description, description)
+  end
+end

@@ -10,7 +10,7 @@ Feature: introducing our projects
     And section "Лого" has project with name "Арбуз"
     And section "Лого" has project with name "Черешня"
     And project "Черешня" has following descriptions:
-      | illustration      | description_ru            | description_en            |
+      | image             | text_ru                   | text_en            |
       | images/demo.jpg   | <h3>Черешня</h3>          | <h3>Cherry</h3>           |
       |                   | <p>Сочная, нежная!</p>    | <p>Juicy, sweet!</p>      |
       | images/demo2.jpg  | <p>Девушкам полезная.</p> | <p>Give to ladies it.</p> |

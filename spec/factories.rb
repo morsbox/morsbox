@@ -10,6 +10,9 @@ Factory.define :project do |f|
   f.name_ru "Some Project"
 end
 
+Factory.define :description do |f|
+end
+
 Factory.define :admin do |f|
   f.email "admin@domain.com"
   f.password "123456"

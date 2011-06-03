@@ -4,4 +4,5 @@ class Project < ActiveRecord::Base
   
   validates :name_ru, :presence => true
   belongs_to :section
+  has_many :descriptions
 end
