@@ -15,5 +15,5 @@ Given /^section with name "([^"]*)" has english name "([^"]*)"$/ do |name_ru, na
 end
 
 Given /^section "([^"]*)" has project with name "([^"]*)"$/ do |section_name, name|
-  Section.find_by_name_ru(section_name).projects << Factory :project, :name_ru => name
+  Section.find_by_name_ru(section_name).projects << Factory(:project, :name_ru => name)
 end

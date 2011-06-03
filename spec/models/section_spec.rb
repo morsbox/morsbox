@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Section do
+  it "is not valid without russian name" do
+    Factory.build(:section, :name_ru => nil).should_not be_valid
+  end
+  
   describe "scope :enabled" do
     before :each do
       @section = Factory :section
