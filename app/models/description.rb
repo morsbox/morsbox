@@ -5,4 +5,6 @@ class Description < ActiveRecord::Base
   has_attached_file :image
   
   belongs_to :project
+  
+  scope :enabled, where(:enabled=>true).order("show_order DESC",:created_at)
 end
