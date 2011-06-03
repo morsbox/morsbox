@@ -1,0 +1,3 @@
+- @sections.each do |section|
+  %li{:class => section==@section && :selected}
+    = link_to section.name, section_path(section)

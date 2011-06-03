@@ -7,6 +7,7 @@ Morsbox::Application.routes.draw do
   end
 
   resources :sections, :only => :show
+  resources :projects, :only => :show
   root :to => "pages#index"
 end
 

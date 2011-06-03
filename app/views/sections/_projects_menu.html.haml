@@ -1,2 +1,5 @@
 #left_light
   ul.projects_menu
+  - @projects.each do |project|
+    %li{:class => project==@project && :selected}
+      = link_to project.name, project_path(project)
