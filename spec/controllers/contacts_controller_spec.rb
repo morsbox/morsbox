@@ -39,7 +39,7 @@ describe ContactsController do
     let(:contact_message){mock_model(ContactMessage, :save => true).as_new_record}
     before :each do
       ContactMessage.stub(:new).and_return contact_message
-      MessageMailer.stub(:contact_message)
+      MessageMailer.stub_chain(:contact_message, :deliver)
     end
     
     it "creates new contact message" do
@@ -64,7 +64,9 @@ describe ContactsController do
       end
       
       it "should deliver contact message in email" do
-        MessageMailer.should_receive(:contact_message).with(contact_message)
+        m = mock(:mailer)
+        MessageMailer.should_receive(:contact_message).with(contact_message).and_return m
+        m.should_receive(:deliver)
         post :create, :locale => 'en'
       end
     end

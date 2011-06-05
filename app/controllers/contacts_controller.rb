@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
     contact = ContactMessage.new params[:contact]
     if contact.save
       flash[:notice] = t.contacts.message_sent
-       MessageMailer.contact_message contact
+      MessageMailer.contact_message(contact).deliver
     else
       flash[:alert] = t.contacts.message_errors + contact.errors.full_messages*", "
       flash[:contact] = params[:contact]

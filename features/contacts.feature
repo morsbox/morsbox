@@ -18,22 +18,22 @@ Feature: contacts
     When I follow "switch_to_locale_en"
     Then I should see "Our contacts info"
 
-  @wip  
   Scenario: send message
-    Given I am on the contacts page
+    Given a admin with email "admin@domain.com" and password "123456"
+    And I am on the contacts page
     When I fill in "contact_name" with "Mikhail"
     And I fill in "contact_email" with "client@admin.com"
     And I fill in "contact_phone" with "1234567"
     And I fill in "contact_message" with "Be my designer!"
     And I press "contact_submit"
     Then I should see element ".notice"
+    And "admin@domain.com" should receive an email
     
-    When I open the email
-    Then I should see following in the email body:
-      | Mikhail           |
-      | client@admin.com  |
-      | 1234567           |
-      | Be my designer!   |
+    When "admin@domain.com" open the email
+    Then they should see "Mikhail" in the email body
+    Then they should see "client@admin.com" in the email body
+    Then they should see "1234567" in the email body
+    Then they should see "Be my designer!" in the email body
   
   Scenario: send empty message
     Given I am on the contacts page
