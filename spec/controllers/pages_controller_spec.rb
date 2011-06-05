@@ -18,23 +18,6 @@ describe PagesController do
     end
   end
   
-  describe "GET pages" do
-    let(:contacts_static_block){mock_model(StaticBlock, :text => "Greetings!")}
-    before :each do
-      StaticBlock.stub(:get_block).and_return contacts_static_block
-    end
-    
-    it "asks 'contacts' static block" do
-      StaticBlock.should_receive(:get_block).with 'contacts'
-      get :contacts, :locale => 'en'
-    end
-    
-    it "assigns text of 'contacts' static block" do
-      get :contacts, :locale => 'en'
-      assigns[:contacts].should == "Greetings!"
-    end
-  end
-
   # Layout tested here, because without controller tests are invalid
   describe "in layouts/application.html.haml" do
     render_views

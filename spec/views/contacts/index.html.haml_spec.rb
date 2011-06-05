@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "pages/contacts.html.haml" do
+describe "contacts/index.html.haml" do
   before :each do
     assign :contacts, "<p class='text'>Greetings!</p>"
     render
