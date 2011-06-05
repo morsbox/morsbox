@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   def index
-    @contact_message = StaticBlock.get_block("contacts").text
+    @contact_info = StaticBlock.get_block("contacts").text
   end
   
   def create

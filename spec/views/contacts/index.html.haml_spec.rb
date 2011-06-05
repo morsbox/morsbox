@@ -4,15 +4,15 @@ describe "contacts/index.html.haml" do
   before :each do
     @contact = mock_model(ContactMessage).as_new_record.as_null_object
     assign :contact, @contact
-    assign :contact_message, "<p class='text'>Greetings!</p>"
+    assign :contact_info, "<p class='text'>Greetings!</p>"
     render
   end
   
-  it "shows text of @contacts" do
+  it "shows text of @contact_info" do
     rendered.should contain("Greetings!")
   end
   
-  it "shows tags in text of @contacts" do
+  it "shows tags in text of @contact_info" do
     rendered.should have_selector("p", :class => "text")
   end
   
