@@ -1,4 +1,3 @@
-@wip
 Feature: contacts
   As a potential client or partner
   I want to ask something
@@ -14,10 +13,12 @@ Feature: contacts
     And I should see "Наши контакты"
     
   Scenario: changing locale
-    Given I am on the contacts page
+    Given static block with name "contacts" has english text "Our contacts info"
+    And I am on the contacts page
     When I follow "switch_to_locale_en"
     Then I should see "Our contacts info"
-  
+
+  @wip  
   Scenario: send message
     Given I am on the contacts page
     When I fill in "contact_name" with "Mikhail"
@@ -31,7 +32,8 @@ Feature: contacts
       | client@admin.com  |
       | 1234567           |
       | Be my designer!   |
-    
+  
+  @wip
   Scenario: send empty message
     Given I am on the contacts page
     When I press "admin_submit"
