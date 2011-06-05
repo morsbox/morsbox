@@ -1,2 +1,6 @@
+contacts:
+    message_sent: Your message was sent
+    message_errors: "Errors occurred: "
+
 menu:
     contacts: contacts

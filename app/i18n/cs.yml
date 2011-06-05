@@ -1,2 +1,6 @@
+contacts:
+    message_sent: Vaše zpráva byla poslat
+    message_errors: "Došlo k chybám: "
+
 menu:
     contacts: kontakt

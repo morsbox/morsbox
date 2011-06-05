@@ -1,2 +1,6 @@
+contacts:
+    message_sent: Ваше сообщение было отправлено
+    message_errors: "Произошли ошибки: "
+
 menu:
     contacts: контакты
