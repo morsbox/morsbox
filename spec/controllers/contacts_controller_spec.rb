@@ -14,7 +14,7 @@ describe ContactsController do
     
     it "assigns text of 'contacts' static block" do
       get :index, :locale => 'en'
-      assigns[:contacts].should == "Greetings!"
+      assigns[:contact_message].should == "Greetings!"
     end
   end
 end
