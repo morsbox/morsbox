@@ -27,7 +27,9 @@ Feature: contacts
     And I fill in "contact_message" with "Be my designer!"
     And I press "contact_submit"
     Then I should see element ".notice"
-    And admin should receive email that contains:
+    
+    When I open the email
+    Then I should see following in the email body:
       | Mikhail           |
       | client@admin.com  |
       | 1234567           |

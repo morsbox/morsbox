@@ -39,6 +39,7 @@ describe ContactsController do
     let(:contact_message){mock_model(ContactMessage, :save => true).as_new_record}
     before :each do
       ContactMessage.stub(:new).and_return contact_message
+      MessageMailer.stub(:contact_message)
     end
     
     it "creates new contact message" do
@@ -56,11 +57,18 @@ describe ContactsController do
       response.should redirect_to(contacts_path)
     end
     
-    it "sets flash[:notice] when saving succesfull" do
-      post :create, :locale => 'en'
-      flash[:notice].should=~ /.+/
+    context "when saving succesfull" do
+      it "sets flash[:notice]" do
+        post :create, :locale => 'en'
+        flash[:notice].should=~ /.+/
+      end
+      
+      it "should deliver contact message in email" do
+        MessageMailer.should_receive(:contact_message).with(contact_message)
+        post :create, :locale => 'en'
+      end
     end
-    
+     
     context "when saving failed" do
       before :each do
         contact_message.stub(:save).and_return false

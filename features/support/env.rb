@@ -48,3 +48,4 @@ end
 #     DatabaseCleaner.strategy = :transaction
 #   end
 #
+require 'email_spec/cucumber'
