@@ -21,7 +21,7 @@ module NavigationHelpers
       section_path Section.find_by_name_ru($1)
       
     when /the page of project "([^"]*)"/
-      section_path Project.find_by_name_ru($1)
+      project_path Project.find_by_name_ru($1)
       
     else
       begin

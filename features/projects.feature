@@ -35,7 +35,6 @@ Feature: introducing our projects
     And I should see element "img[src*='demo.jpg']"
     And I should see element "img[src*='demo2.jpg']"
   
-  @wip
   Scenario: changing locale
     Given project with name "Арбуз" has english name "Watermelon"
     And project with name "Черешня" has english name "Cherry"
