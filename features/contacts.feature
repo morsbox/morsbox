@@ -33,8 +33,7 @@ Feature: contacts
       | 1234567           |
       | Be my designer!   |
   
-  @wip
   Scenario: send empty message
     Given I am on the contacts page
-    When I press "admin_submit"
+    When I press "contact_submit"
     Then I should see element ".alert"

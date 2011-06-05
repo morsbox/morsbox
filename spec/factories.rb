@@ -19,3 +19,10 @@ Factory.define :admin do |f|
   f.password_confirmation { |x| x.password }
   f.remember_me true
 end
+
+Factory.define :contact_message do |f|
+  f.name "Vasia"
+  f.email "vasia@domian.com"
+  f.phone "1233112"
+  f.message "Your works are great!"
+end
