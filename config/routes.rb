@@ -8,6 +8,7 @@ Morsbox::Application.routes.draw do
 
   resources :sections, :only => :show
   resources :projects, :only => :show
+  match "contacts" => "pages#contacts"
   root :to => "pages#index"
 end
 
