@@ -9,10 +9,10 @@ Feature: introducing our projects
     And section "Лого" has project with name "Арбуз"
     And section "Лого" has project with name "Черешня"
     And project "Черешня" has following descriptions:
-      | image             | text_ru                   | text_en            |
-      | images/demo.jpg   | <h3>Черешня</h3>          | <h3>Cherry</h3>           |
-      |                   | <p>Сочная, нежная!</p>    | <p>Juicy, sweet!</p>      |
-      | images/demo2.jpg  | <p>Девушкам полезная.</p> | <p>Give to ladies it.</p> |
+      | image     | text_ru             | text_en            |
+      | demo.jpg  | <h3>Черешня</h3>    | <h3>Cherry</h3>    |
+      |           | Сочная, нежная!     | Juicy, sweet!      |
+      | demo2.jpg | Девушкам полезная.  | Give to ladies it. |
   
   Scenario: visit category
     Given I am on the home page
@@ -22,7 +22,6 @@ Feature: introducing our projects
     And I should see "Арбуз" within ".projects_menu"
     And I should see "Черешня" within ".projects_menu"
   
-  @wip
   Scenario: visit project
     Given I am on the page of section "Лого"
     When I follow "Черешня"
@@ -31,10 +30,10 @@ Feature: introducing our projects
     And I should see "Арбуз" within ".projects_menu"
     And I should see "Черешня" within ".projects_menu .selected"
     And I should see "Черешня" within "h3"
-    And I should see "Сочная, нежная!" within "p"
-    And I should see "Девушкам полезная." within "p"
-    And I should see element "img[src~='demo.jpg']"
-    And I should see element "img[src~='demo2.jpg']"
+    And I should see "Сочная, нежная!"
+    And I should see "Девушкам полезная."
+    And I should see element "img[src*='demo.jpg']"
+    And I should see element "img[src*='demo2.jpg']"
   
   @wip
   Scenario: changing locale
@@ -42,9 +41,8 @@ Feature: introducing our projects
     And project with name "Черешня" has english name "Cherry"
     And I am on the page of project "Черешня"
     When I follow "switch_to_locale_en"
-    Then I should be on the page of project "Черешня"
-    And I should see "Watermelon" within ".projects_menu"
+    Then I should see "Watermelon" within ".projects_menu"
     And I should see "Cherry" within ".projects_menu .selected"
     And I should see "Cherry" within "h3"
-    And I should see "Juicy, sweet!" within "p"
-    And I should see "Give to ladies it." within "p"
+    And I should see "Juicy, sweet!"
+    And I should see "Give to ladies it."

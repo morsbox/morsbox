@@ -21,8 +21,12 @@ end
 Given /^project "([^"]*)" has following descriptions:$/ do |project_name, descriptions|
   project = Project.find_by_name_ru(project_name)
   descriptions.hashes.each do |description|
-    project.descriptions << Factory(:description, description)
+    project.descriptions << Factory(:description,
+                                    :image_file_name => description[:image],
+                                    :text_ru => description[:text_ru],
+                                    :text_en => description[:text_en])
   end
+  project.descriptions.each{ |d| p d.image.url }
 end
 
 Given /^project with name "([^"]*)" has english name "([^"]*)"$/ do |name_ru, name_en|

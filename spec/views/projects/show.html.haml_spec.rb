@@ -3,8 +3,13 @@ require 'spec_helper'
 describe "projects/show.html.haml" do
   let(:project1){mock_model(Project).as_null_object}
   let(:image){mock :image, :url => "/some/url/to/image.jpg"}
-  let(:desc1){mock_model Description,:text=>"<p>Description 1</p>", :image => image}
-  let(:desc2){mock_model Description,:text=>"<p class='text'>Description 2</p>",:image=>nil}
+  let(:desc1){
+    mock_model Description,:text=>"<p>Description 1</p>", :image => image,
+                           :image_file_name => "image.jpg"
+  }
+  let(:desc2){
+    mock_model Description,:text=>"<p class='text'>Description 2</p>",:image_file_name => nil
+  }
   before :each do
     assign :project, project1
     assign :projects, [project1]

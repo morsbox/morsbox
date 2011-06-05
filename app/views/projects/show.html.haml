@@ -1,7 +1,7 @@
 = render "sections/projects_menu"
 #content.narrow
   - @project.descriptions.enabled.each do |description|
-    - if description.image
+    - if description.image_file_name
       .image_container= image_tag description.image.url
     - if description.text
       .description_container!= description.text
