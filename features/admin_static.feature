@@ -1,4 +1,3 @@
-@wip
 Feature: manage static blocks
   As a admin
   I want to manage of static blocks
@@ -15,6 +14,7 @@ Feature: manage static blocks
     Then I should see "home"
     And I should see "contacts"
   
+  @wip
   Scenario: editing static block
     Given I am on the admin static blocks page
     When I follow "contacts"
@@ -34,6 +34,7 @@ Feature: manage static blocks
     And I should see element ".notice"
     And I should see "contacts_old"
   
+  @wip
   Scenario: editing static block - failed
     Given I am on the edit admin static block "contacts" page
     When I fill in "static_block_name" with "home"
@@ -41,6 +42,7 @@ Feature: manage static blocks
     Then I should be on the edit admin static block "contacts" page
     And I should see element ".alert"
   
+  @wip
   Scenario: deleting static block
     Given I am on the admin static blocks page
     When I follow "Удалить"

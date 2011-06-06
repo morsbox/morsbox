@@ -1,2 +1,10 @@
 #content.wide
-  %h1= t.admin.static_block_manager
+  %h1= t.admin.static_block.manager
+  %table
+    %tr
+      %th= t.admin.name
+      %th= t.admin.actions
+    - @static_blocks.each do |static_block|
+      %tr
+        %td= link_to static_block.name, edit_admin_static_block_path(static_block)
+        %td= link_to t.admin.delete, admin_static_block_path(static_block), :method => :delete, :confirmation => t.admin.delete_confirmation
