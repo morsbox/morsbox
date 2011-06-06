@@ -22,7 +22,10 @@ module NavigationHelpers
       
     when /the page of project "([^"]*)"/
       project_path Project.find_by_name_ru($1)
-      
+    
+    when /the edit admin static block "([^"]*)" page/
+      edit_admin_static_block_path StaticBlock.get_block($1)
+    
     else
       begin
         page_name =~ /^the (.*) page$/

@@ -30,4 +30,24 @@ describe Admin::StaticBlocksController do
       response.should render_template(:index)
     end
   end
+  
+  describe "GET edit" do
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      @static_block = mock_model(StaticBlock, :id => 1, :name=>"home").as_null_object
+      StaticBlock.stub(:find).and_return @static_block
+    end
+    
+    it "assign @static_block" do
+      StaticBlock.should_receive(:find).with 1
+      get :edit, :locale => "ru", :id => 1
+      assigns(:static_block).should == @static_block
+    end
+    
+    it "renders edit view" do
+      get :edit, :locale => 'ru', :id => 1
+      response.should render_template(:edit)
+    end
+  end
 end

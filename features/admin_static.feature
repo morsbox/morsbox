@@ -17,7 +17,7 @@ Feature: manage static blocks
   @wip
   Scenario: editing static block
     Given I am on the admin static blocks page
-    When I follow "contacts"
+    When I follow "contacts" within "#content"
     Then I should be on the edit admin static block "contacts" page
     And the "static_block_name" field should contain "contacts"
     And the "static_block_text_ru" field should contain "Наши контакты"
@@ -45,5 +45,5 @@ Feature: manage static blocks
   @wip
   Scenario: deleting static block
     Given I am on the admin static blocks page
-    When I follow "Удалить"
+    When I follow "Удалить" within "#content"
     Then I should not see "home"

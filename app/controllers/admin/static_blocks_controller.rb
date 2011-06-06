@@ -4,6 +4,7 @@ class Admin::StaticBlocksController < Admin::IndexController
   end
   
   def edit
+    @static_block = StaticBlock.find params[:id]
   end
   
   def update

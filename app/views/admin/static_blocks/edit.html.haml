@@ -1,0 +1,14 @@
+#content.wide
+  %h1= t.admin.static_block.edit
+  = form_for [:admin, @static_block] do |f|
+    = f.label :name
+    = f.text_field :name
+    = f.label :text_cs
+    = f.text_area :text_cs
+    = f.label :text_en
+    = f.text_area :text_en
+    = f.label :text_ru
+    = f.text_area :text_ru
+    = f.submit
+    = f.submit t.admin.apply, :id => "static_block_apply", :name => "apply"
+  = link_to t.admin.static_block.back, admin_static_blocks_path
