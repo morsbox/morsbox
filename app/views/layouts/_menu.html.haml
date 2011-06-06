@@ -1,0 +1,6 @@
+%ul.menu
+  - @sections.each do |section|
+    %li{:class => section==@section && :selected}
+      = link_to section.name, section_path(section)
+  %li{:class => [:separated, params[:controller]=="contacts" && :selected]}
+    = link_to t.menu.contacts, contacts_path, :title => "contacts"

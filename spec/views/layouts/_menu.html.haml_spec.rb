@@ -1,9 +1,10 @@
 require 'spec_helper'
 
-describe "layouts/_list_of_sections.html.haml" do
+describe "layouts/_menu.html.haml" do
   let(:section1){mock_model Section, :name => "Section 1"}
   let(:section2){mock_model Section, :name => "Section 2"}
   before :each do
+    R18n.set(R18n::I18n.new('ru'))
     assign :sections, [section1, section2]
   end
   
@@ -25,5 +26,11 @@ describe "layouts/_list_of_sections.html.haml" do
     rendered.should have_selector("li.selected") do |selected|
       selected.should contain("Section 2")
     end
+  end
+  
+  it "selects contacts menuitem when controller is contacts" do
+    params[:controller] = "contacts"
+    render
+    rendered.should have_selector("li.selected a", :href => contacts_path)
   end
 end
