@@ -3,6 +3,7 @@ Morsbox::Application.routes.draw do
   
   namespace 'admin' do
     resources :index
+    resources :static_blocks, :except => [:new, :create, :show]
     root :to => "index#index"
   end
 

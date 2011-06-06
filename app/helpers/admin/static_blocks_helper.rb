@@ -1,0 +1,2 @@
+module Admin::StaticBlocksHelper
+end
