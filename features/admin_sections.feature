@@ -28,7 +28,6 @@ Feature: manage sections
     And the "section_name_ru" field should contain "Веб"
     And I should see "Веб" within ".menu"
   
-  @wip
   Scenario: creating new section - saving
     Given I am on the new admin section page
     When I fill in "section_name_ru" with "Веб"
@@ -37,7 +36,6 @@ Feature: manage sections
     And I should see element ".notice"
     And I should see "Веб" within "#content"
    
-  @wip
   Scenario: creating new section - failed
     Given I am on the new admin section page
     And I press "section_submit"

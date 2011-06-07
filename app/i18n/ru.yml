@@ -17,7 +17,15 @@ contacts:
 
 menu:
     contacts: контакты
-    
+
+section:
+    back: Назад к списку разделов
+    edit: Редактор раздела
+    errors_occurred: "Произошли ошибки: "
+    manager: Менеджер разделов
+    new: Новый раздел
+    saved_successfully: Раздел успешно сохранен!
+
 static_block:
     back: Назад к списку блоков статики
     edit: Редактор блока статики

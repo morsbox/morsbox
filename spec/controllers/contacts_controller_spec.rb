@@ -81,7 +81,7 @@ describe ContactsController do
         flash[:alert].should=~ /.+/
       end
       
-      it "sets flash[:category] with params[:category]" do
+      it "sets flash[:contact] with params[:contact]" do
         post :create, :locale => 'en', :contact => {"name"=>"Vasia"}
         flash[:contact].should == {"name"=>"Vasia"}
       end

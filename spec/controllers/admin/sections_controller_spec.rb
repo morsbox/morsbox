@@ -58,4 +58,67 @@ describe Admin::SectionsController do
       response.should render_template(:new)
     end
   end
+  
+  describe "POST create" do
+    let(:section){mock_model(Section).as_null_object}
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      Section.stub(:new).and_return section
+      section.stub(:save).and_return true
+    end
+    
+    it "creates new section" do
+      Section.should_receive(:new).with "name_ru"=>"Logo"
+      post :create, :locale => "ru", :section => {"name_ru"=>"Logo"}
+    end
+    
+    it "saves section" do
+      section.should_receive :save
+      post :create, :locale => "ru"
+    end
+    
+    it "nullifies empty translates from param hash" do
+      Section.should_receive(:new).with "name_ru"=>"Logo","name_en"=>nil
+      post :create, :locale => "ru", :section=>{"name_ru"=>"Logo","name_en"=>""}
+    end
+    
+    context "when saving is successful" do
+      it "sets flash[:notice]" do
+        post :create, :locale => "ru"
+        flash[:notice].should=~ /.+/
+      end
+      
+      it "redirects to edit this section if apply was passed" do
+        post :create, :locale => "ru", :apply => "foo"
+        response.should redirect_to(edit_admin_section_path(section))
+      end
+      
+      it "redirects to index of section if apply wasn't passed" do
+        post :create, :locale => "ru"
+        response.should redirect_to(admin_sections_path)
+      end
+    end
+    
+    context "when saving isn't successful" do
+      before :each do
+        section.stub(:save).and_return false
+      end
+      
+      it "sets flash[:alert]" do
+        post :create, :locale => "ru"
+        flash[:alert].should=~ /.+/
+      end
+      
+      it "sets flash[:section] with params[:section]" do
+        post :create, :locale => 'en', :section => {"name_ru"=>"Logo"}
+        flash[:section].should == {"name_ru"=>"Logo"}
+      end
+      
+      it "redirects to new section" do
+        post :create, :locale => "ru"
+        response.should redirect_to(new_admin_section_path)
+      end
+    end
+  end
 end
