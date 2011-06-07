@@ -24,5 +24,8 @@ class Admin::StaticBlocksController < Admin::IndexController
   end
   
   def destroy
+    @static_block = StaticBlock.find params[:id]
+    @static_block.destroy
+    redirect_to admin_static_blocks_path
   end
 end

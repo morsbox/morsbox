@@ -108,4 +108,29 @@ describe Admin::StaticBlocksController do
       end
     end
   end
+  
+  describe "DELETE destroy" do
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      @static_block = mock_model(StaticBlock, :id => 1, :name=>"home").as_null_object
+      StaticBlock.stub(:find).and_return @static_block
+      @static_block.stub(:destroy)
+    end
+    
+    it "finds deleted static block" do
+      StaticBlock.should_receive(:find).with 1
+      delete :destroy, :locale => "ru", :id => 1
+    end
+    
+    it "destroy static block" do
+      @static_block.should_receive :destroy
+      delete :destroy, :locale => "ru", :id => 1
+    end
+    
+    it "redirects to index of static blocks" do
+      delete :destroy, :locale => "ru", :id => 1
+      response.should redirect_to(admin_static_blocks_path)
+    end
+  end
 end

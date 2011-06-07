@@ -39,8 +39,7 @@ Feature: manage static blocks
     And I press "static_block_submit"
     Then I should be on the edit admin static block "contacts" page
     And I should see element ".alert"
-  
-  @wip
+
   Scenario: deleting static block
     Given I am on the admin static blocks page
     When I follow "Удалить" within "#content"
