@@ -51,7 +51,7 @@ describe Admin::StaticBlocksController do
     end
   end
   
-  describe "POST update" do
+  describe "PUT update" do
     before :each do
       @request.env["devise.mapping"] = Devise.mappings[:admin]
       sign_in Factory.create(:admin)
@@ -62,32 +62,32 @@ describe Admin::StaticBlocksController do
     
     it "finds updated static block" do
       StaticBlock.should_receive(:find).with 1
-      post :update, :locale => "ru", :id => 1
+      put :update, :locale => "ru", :id => 1
     end
     
     it "updates attributes of static block" do
       @static_block.should_receive :update_attributes
-      post :update, :locale => "ru", :id => 1
+      put :update, :locale => "ru", :id => 1
     end
     
     it "nullifies empty translates from param hash" do
       @static_block.should_receive(:update_attributes).with "name"=>"home","text_en"=>nil
-      post :update, :locale => "ru", :id => 1, :static_block=>{:name=>"home",:text_en=>""}
+      put :update, :locale => "ru", :id => 1, :static_block=>{:name=>"home",:text_en=>""}
     end
     
     context "when saving is successful" do
       it "sets flash[:notice]" do
-        post :update, :locale => "ru", :id => 1
+        put :update, :locale => "ru", :id => 1
         flash[:notice].should=~ /.+/
       end
       
       it "redirects to edit this static block if apply was passed" do
-        post :update, :locale => "ru", :id => 1, :apply => "foo"
+        put :update, :locale => "ru", :id => 1, :apply => "foo"
         response.should redirect_to(edit_admin_static_block_path(@static_block))
       end
       
       it "redirects to index of static blocks if apply wasn't passed" do
-        post :update, :locale => "ru", :id => 1
+        put :update, :locale => "ru", :id => 1
         response.should redirect_to(admin_static_blocks_path)
       end
     end
@@ -98,12 +98,12 @@ describe Admin::StaticBlocksController do
       end
       
       it "sets flash[:alert]" do
-        post :update, :locale => "ru", :id => 1
+        put :update, :locale => "ru", :id => 1
         flash[:alert].should=~ /.+/
       end
       
       it "redirects to edit this static block" do
-        post :update, :locale => "ru", :id => 1
+        put :update, :locale => "ru", :id => 1
         response.should redirect_to(edit_admin_static_block_path(@static_block))
       end
     end
