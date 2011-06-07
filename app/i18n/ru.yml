@@ -2,12 +2,14 @@ admin:
     actions: Действия
     apply: Применить
     delete: Удалить
+    delete_confirmation: Вы уверены?
     disabled: Выкл.
     enabled: Вкл.
     logout: Выйти
     name: Имя
     profile: Мой профиль
-    static: Блоки статики
+    sections: Разделы
+    statics: Блоки статики
 
 contacts:
     message_sent: Ваше сообщение было отправлено

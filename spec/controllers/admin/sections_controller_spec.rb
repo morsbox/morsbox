@@ -15,4 +15,23 @@ describe Admin::SectionsController do
     delete :destroy, :locale => 'ru', :id => 1
     response.should redirect_to(new_admin_session_path)
   end
+  
+  describe "GET index" do
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      @section = mock_model(Section).as_null_object
+      Section.stub(:sorted).and_return [@section]
+    end
+    
+    it "assign @section" do
+      get :index, :locale => "ru"
+      assigns(:sections).should == [@section]
+    end
+    
+    it "renders index view" do
+      get :index, :locale => 'ru'
+      response.should render_template(:index)
+    end
+  end
 end

@@ -23,7 +23,8 @@
             %li=link_to loc.title,url_for(:locale=>loc.code),:id => "switch_to_locale_#{loc.code}"
         - if admin_signed_in?
           %ul.admin_menu
-            %li= link_to t.admin.static, admin_static_blocks_path, :id => "static_block_manager"
+            %li= link_to t.admin.statics, admin_static_blocks_path, :id => "static_block_manager"
+            %li= link_to t.admin.sections, admin_sections_path, :id => "section_manager"
             %li= link_to t.admin.profile, edit_admin_registration_path, :id => "admin_edit"
             %li= link_to t.admin.logout, destroy_admin_session_path, :id => "admin_logout"
       = yield

@@ -5,6 +5,22 @@ describe Section do
     Factory.build(:section, :name_ru => nil).should_not be_valid
   end
   
+  describe "scope :sorted" do
+    before :each do
+      @section = Factory :section
+    end
+    
+    it "returns sections ordered by show_order" do
+      @second_section = Factory  :section, :show_order => 1
+      Section.sorted.should == [@second_section,@section]
+    end
+    
+    it "returns sections with equal show_order ordered by creation time" do
+      @second_section = Factory :section
+      Section.sorted.should == [@section,@second_section]
+    end
+  end
+  
   describe "scope :enabled" do
     before :each do
       @section = Factory :section

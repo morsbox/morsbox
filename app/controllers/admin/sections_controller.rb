@@ -1,5 +1,6 @@
 class Admin::SectionsController < Admin::IndexController
   def index
+    @sections = Section.sorted
   end
   
   def new

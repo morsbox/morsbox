@@ -1,4 +1,3 @@
-@wip
 Feature: manage sections
   As a admin
   I want to manage of list of sections
@@ -15,6 +14,7 @@ Feature: manage sections
     Then I should see "Лого" within "#content"
     And I should see "Стиль" within "#content"
   
+  @wip
   Scenario: creating new section - applying
     Given I am on the admin sections page
     When I follow "new section"
@@ -28,6 +28,7 @@ Feature: manage sections
     And the "section_name_ru" field should contain "Веб"
     And I should see "Веб" within ".menu"
   
+  @wip
   Scenario: creating new section - saving
     Given I am on the new admin section page
     When I fill in "section_name_ru" with "Веб"
@@ -35,13 +36,15 @@ Feature: manage sections
     Then I should be on the admin sections page
     And I should see element ".notice"
     And I should see "Веб" within "#content"
-    
+   
+  @wip
   Scenario: creating new section - failed
     Given I am on the new admin section page
     And I press "section_submit"
     Then I should be on the new admin section page
     And I should see element ".alert"
   
+  @wip
   Scenario: editing section
     Given I am on the admin sections page
     When I follow "Стиль" within "#content"
@@ -60,6 +63,7 @@ Feature: manage sections
     And I should see "Фирменный стиль" within "#content"
     And I should see "Фирменный стиль" within ".menu"
   
+  @wip
   Scenario: editing section - failed
     Given I am on the edit admin section "Стиль" page
     When I fill in "section_name_ru" with ""
@@ -67,6 +71,7 @@ Feature: manage sections
     Then I should be on the edit admin section "Стиль" page
     And I should see element ".alert"
   
+  @wip
   Scenario: toggling ativity of sections
     Given I am on the admin sections page
     When I follow "Вкл." within xpath //tr[text()="Лого"]
@@ -77,8 +82,10 @@ Feature: manage sections
     Then I should see "Вкл." within xpath //tr[text()="Лого"]
     And I should see "Лого" within ".menu"
   
+  @wip
   Scenario: changing show order of sections
   
+  @wip
   Scenario: deleting sections
     Given I am on the admin sections page
     When I follow "Удалить" within "#content"
