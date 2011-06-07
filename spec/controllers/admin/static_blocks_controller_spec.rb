@@ -50,4 +50,62 @@ describe Admin::StaticBlocksController do
       response.should render_template(:edit)
     end
   end
+  
+  describe "POST update" do
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      @static_block = mock_model(StaticBlock, :id => 1, :name=>"home").as_null_object
+      StaticBlock.stub(:find).and_return @static_block
+      @static_block.stub(:update_attributes).and_return true
+    end
+    
+    it "finds updated static block" do
+      StaticBlock.should_receive(:find).with 1
+      post :update, :locale => "ru", :id => 1
+    end
+    
+    it "updates attributes of static block" do
+      @static_block.should_receive :update_attributes
+      post :update, :locale => "ru", :id => 1
+    end
+    
+    it "nullifies empty translates from param hash" do
+      @static_block.should_receive(:update_attributes).with "name"=>"home","text_en"=>nil
+      post :update, :locale => "ru", :id => 1, :static_block=>{:name=>"home",:text_en=>""}
+    end
+    
+    context "when saving is successful" do
+      it "sets flash[:notice]" do
+        post :update, :locale => "ru", :id => 1
+        flash[:notice].should=~ /.+/
+      end
+      
+      it "redirects to edit this static block if apply was passed" do
+        post :update, :locale => "ru", :id => 1, :apply => "foo"
+        response.should redirect_to(edit_admin_static_block_path(@static_block))
+      end
+      
+      it "redirects to index of static blocks if apply wasn't passed" do
+        post :update, :locale => "ru", :id => 1
+        response.should redirect_to(admin_static_blocks_path)
+      end
+    end
+    
+    context "when saving isn't successful" do
+      before :each do
+        @static_block.stub(:update_attributes).and_return false
+      end
+      
+      it "sets flash[:alert]" do
+        post :update, :locale => "ru", :id => 1
+        flash[:alert].should=~ /.+/
+      end
+      
+      it "redirects to edit this static block" do
+        post :update, :locale => "ru", :id => 1
+        response.should redirect_to(edit_admin_static_block_path(@static_block))
+      end
+    end
+  end
 end

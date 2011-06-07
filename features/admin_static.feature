@@ -13,8 +13,7 @@ Feature: manage static blocks
     When I follow "static_block_manager"
     Then I should see "home"
     And I should see "contacts"
-  
-  @wip
+
   Scenario: editing static block
     Given I am on the admin static blocks page
     When I follow "contacts" within "#content"
@@ -33,8 +32,7 @@ Feature: manage static blocks
     Then I should be on the admin static blocks page
     And I should see element ".notice"
     And I should see "contacts_old"
-  
-  @wip
+
   Scenario: editing static block - failed
     Given I am on the edit admin static block "contacts" page
     When I fill in "static_block_name" with "home"

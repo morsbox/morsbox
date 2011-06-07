@@ -1,6 +1,22 @@
+admin:
+    actions: Действия
+    apply: Применить
+    delete: Удалить
+    logout: Выйти
+    name: Имя
+    profile: Мой профиль
+    static: Блоки статики
+
 contacts:
     message_sent: Ваше сообщение было отправлено
     message_errors: "Произошли ошибки: "
 
 menu:
     contacts: контакты
+    
+static_block:
+    back: Назад к списку блоков статики
+    edit: Редактор блока статики
+    errors_occurred: "Произошли ошибки: "
+    manager: Менеджер блоков статики
+    saved_successfully: Блок статики успешно сохранен!
