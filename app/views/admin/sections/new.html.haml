@@ -1,0 +1,16 @@
+#content.wide
+  %h1= t.section.new
+  = form_for [:admin, @section] do |f|
+    = f.label :name_cs
+    = f.text_field :name_cs
+    = f.label :name_en
+    = f.text_field :name_en
+    = f.label :name_ru
+    = f.text_field :name_ru
+    = f.label :enabled
+    = f.check_box :enabled
+    = f.label :show_order
+    = f.text_field :show_order
+    = f.submit
+    = f.submit t.admin.apply, :id => "section_apply", :name => "apply"
+  = link_to t.section.back, admin_sections_path

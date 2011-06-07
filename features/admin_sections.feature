@@ -17,7 +17,7 @@ Feature: manage sections
   @wip
   Scenario: creating new section - applying
     Given I am on the admin sections page
-    When I follow "new section"
+    When I follow "new_section"
     Then I should be on the new admin section page
     
     When I fill in "section_name_ru" with "Веб"

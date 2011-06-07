@@ -4,6 +4,7 @@ class Admin::SectionsController < Admin::IndexController
   end
   
   def new
+    @section = Section.new flash[:section]
   end
   
   def create

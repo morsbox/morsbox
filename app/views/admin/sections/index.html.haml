@@ -1,5 +1,6 @@
 #content.wide
   %h1= t.section.manager
+  = link_to t.section.new, new_admin_section_path, :id => "new_section"
   %table
     %tr
       %th= t.admin.name
