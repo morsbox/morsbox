@@ -2,6 +2,8 @@ admin:
     actions: Действия
     apply: Применить
     delete: Удалить
+    disabled: Выкл.
+    enabled: Вкл.
     logout: Выйти
     name: Имя
     profile: Мой профиль

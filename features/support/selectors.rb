@@ -20,8 +20,8 @@ module HtmlSelectorsHelpers
     # You can also return an array to use a different selector
     # type, like:
     #
-    #  when /the header/
-    #    [:xpath, "//header"]
+    when /^xpath (.+)$/
+      [:xpath, $1]
 
     # This allows you to provide a quoted selector as the scope
     # for "within" steps as was previously the default for the
