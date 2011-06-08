@@ -1,4 +1,6 @@
 class Admin::SectionsController < Admin::IndexController
+  before_filter(:only => [:create, :update]){ nullify_empty_values_from_params :section }
+  
   def index
     @sections = Section.sorted
   end
@@ -8,7 +10,6 @@ class Admin::SectionsController < Admin::IndexController
   end
   
   def create
-    (params[:section]||{}).each{ |k,v| params[:section][k]=nil if v.blank? }
     @section = Section.new params[:section]
     if @section.save
       flash[:notice] = t.section.saved_successfully
@@ -29,6 +30,18 @@ class Admin::SectionsController < Admin::IndexController
   end
   
   def update
+    @section = Section.find params[:id]
+    if @section.update_attributes params[:section]
+      flash[:notice] = t.section.saved_successfully
+      if params[:apply]
+        redirect_to edit_admin_section_path(@section)
+      else
+        redirect_to admin_sections_path
+      end
+    else
+      flash[:alert] = t.section.errors_occurred
+      redirect_to edit_admin_section_path(@section)
+    end
   end
   
   def destroy

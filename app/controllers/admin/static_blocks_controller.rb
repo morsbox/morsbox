@@ -1,4 +1,6 @@
 class Admin::StaticBlocksController < Admin::IndexController
+  before_filter(:only => :update){ nullify_empty_values_from_params :static_block }
+  
   def index
     @static_blocks = StaticBlock.all
   end
@@ -8,7 +10,6 @@ class Admin::StaticBlocksController < Admin::IndexController
   end
   
   def update
-    (params[:static_block]||{}).each{ |k,v| params[:static_block][k]=nil if v.blank? }
     @static_block = StaticBlock.find params[:id]
     if @static_block.update_attributes params[:static_block]
       flash[:notice] = t.static_block.saved_successfully

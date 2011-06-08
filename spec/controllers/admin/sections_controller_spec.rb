@@ -141,4 +141,62 @@ describe Admin::SectionsController do
       response.should render_template(:edit)
     end
   end
+  
+  describe "PUT update" do
+    let(:section){mock_model(Section).as_null_object}
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      Section.stub(:find).and_return section
+      section.stub(:update_attributes).and_return true
+    end
+    
+    it "finds the section" do
+      Section.should_receive(:find).with 1
+      put :update, :locale => "ru", :id => 1
+    end
+    
+    it "updates attributes of section" do
+      section.should_receive :update_attributes
+      put :update, :locale => "ru", :id => 1
+    end
+    
+    it "nullifies empty translates from param hash" do
+      section.should_receive(:update_attributes).with "name_ru"=>"Logo","name_en"=>nil
+      put :update, :locale => "ru", :id => 1, :section=>{"name_ru"=>"Logo","name_en"=>""}
+    end
+    
+    context "when saving is successful" do
+      it "sets flash[:notice]" do
+        put :update, :locale => "ru", :id => 1
+        flash[:notice].should=~ /.+/
+      end
+      
+      it "redirects to edit this section if apply was passed" do
+        put :update, :locale => "ru", :id => 1, :apply => "foo"
+        response.should redirect_to(edit_admin_section_path(section))
+      end
+      
+      it "redirects to index of section if apply wasn't passed" do
+        put :update, :locale => "ru", :id => 1
+        response.should redirect_to(admin_sections_path)
+      end
+    end
+    
+    context "when saving isn't successful" do
+      before :each do
+        section.stub(:update_attributes).and_return false
+      end
+      
+      it "sets flash[:alert]" do
+        put :update, :locale => "ru", :id => 1
+        flash[:alert].should=~ /.+/
+      end
+      
+      it "redirects to edit this section" do
+        put :update, :locale => "ru", :id => 1
+        response.should redirect_to(edit_admin_section_path(section))
+      end
+    end
+  end
 end

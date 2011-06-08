@@ -41,7 +41,6 @@ Feature: manage sections
     Then I should be on the new admin section page
     And I should see element ".alert"
   
-  @wip
   Scenario: editing section
     Given I am on the admin sections page
     When I follow "Стиль" within "#content"
@@ -60,7 +59,6 @@ Feature: manage sections
     And I should see "Фирменный стиль" within "#content"
     And I should see "Фирменный стиль" within ".menu"
   
-  @wip
   Scenario: editing section - failed
     Given I am on the edit admin section "Стиль" page
     When I fill in "section_name_ru" with ""
