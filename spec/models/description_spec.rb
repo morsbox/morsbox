@@ -16,7 +16,7 @@ describe Description do
     end
     
     it "returns descriptions ordered by show_order" do
-      @second_description = Factory :description, :show_order => 1
+      @second_description = Factory :description, :show_order => -1
       Description.enabled.should == [@second_description,@description]
     end
     

@@ -20,7 +20,7 @@ describe Project do
     end
     
     it "returns projects ordered by show_order" do
-      @second_project = Factory :project, :show_order => 1
+      @second_project = Factory :project, :show_order => -1
       Project.enabled.should == [@second_project,@project]
     end
     

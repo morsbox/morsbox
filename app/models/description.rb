@@ -6,5 +6,5 @@ class Description < ActiveRecord::Base
   
   belongs_to :project
   
-  scope :enabled, where(:enabled=>true).order("show_order DESC",:created_at)
+  scope :enabled, where(:enabled=>true).order(:show_order, :created_at)
 end

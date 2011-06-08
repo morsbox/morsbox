@@ -11,7 +11,7 @@ describe Section do
     end
     
     it "returns sections ordered by show_order" do
-      @second_section = Factory  :section, :show_order => 1
+      @second_section = Factory  :section, :show_order => -1
       Section.sorted.should == [@second_section,@section]
     end
     
@@ -36,7 +36,7 @@ describe Section do
     end
     
     it "returns sections ordered by show_order" do
-      @second_section = Factory  :section, :show_order => 1
+      @second_section = Factory  :section, :show_order => -1
       Section.enabled.should == [@second_section,@section]
     end
     
