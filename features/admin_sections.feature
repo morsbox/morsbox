@@ -65,16 +65,15 @@ Feature: manage sections
     And I press "section_submit"
     Then I should be on the edit admin section "Стиль" page
     And I should see element ".alert"
-  
-  @wip
+
   Scenario: toggling ativity of sections
     Given I am on the admin sections page
-    When I follow "Вкл." within xpath //tr[text()="Лого"]
-    Then I should see "Выкл." within xpath //tr[text()="Лого"]
+    When I follow "Вкл." within xpath //tr[contains(.//text(),"Лого")]
+    Then I should see "Выкл." within xpath //tr[contains(.//text(),"Лого")]
     And I should not see "Лого" within ".menu"
     
-    When I follow "Выкл." within xpath //tr[text()="Лого"]
-    Then I should see "Вкл." within xpath //tr[text()="Лого"]
+    When I follow "Выкл." within xpath //tr[contains(.//text(),"Лого")]
+    Then I should see "Вкл." within xpath //tr[contains(.//text(),"Лого")]
     And I should see "Лого" within ".menu"
   
   @wip

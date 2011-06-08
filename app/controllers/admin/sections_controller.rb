@@ -2,7 +2,7 @@ class Admin::SectionsController < Admin::IndexController
   before_filter(:only => [:create, :update]){ nullify_empty_values_from_params :section }
   
   def index
-    @sections = Section.sorted
+    @admin_sections = Section.sorted
   end
   
   def new

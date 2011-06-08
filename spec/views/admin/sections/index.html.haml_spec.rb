@@ -4,7 +4,7 @@ describe "admin/sections/index.html.haml" do
   before :each do
     R18n.set(R18n::I18n.new('ru'))
     @section = mock_model(Section, :id => 1, :name=>"web_ru").as_null_object
-    assign :sections, [@section]
+    assign :admin_sections, [@section]
   end
   
   it "shows section's name" do

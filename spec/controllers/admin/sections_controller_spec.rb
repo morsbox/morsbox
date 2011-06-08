@@ -24,9 +24,9 @@ describe Admin::SectionsController do
       Section.stub(:sorted).and_return [@section]
     end
     
-    it "assign @section" do
+    it "assign @admin_sections" do
       get :index, :locale => "ru"
-      assigns(:sections).should == [@section]
+      assigns(:admin_sections).should == [@section]
     end
     
     it "renders index view" do
