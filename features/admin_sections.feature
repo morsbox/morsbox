@@ -79,8 +79,7 @@ Feature: manage sections
   @wip
   Scenario: changing show order of sections
   
-  @wip
   Scenario: deleting sections
     Given I am on the admin sections page
-    When I follow "Удалить" within "#content"
+    When I follow "Удалить" within xpath //tr[contains(.//text(),"Лого")]
     Then I should not see "Лого"

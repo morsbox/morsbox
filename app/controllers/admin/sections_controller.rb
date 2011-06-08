@@ -45,5 +45,8 @@ class Admin::SectionsController < Admin::IndexController
   end
   
   def destroy
+    @section = Section.find params[:id]
+    @section.destroy
+    redirect_to admin_sections_path
   end
 end

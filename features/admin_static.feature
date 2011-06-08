@@ -42,5 +42,5 @@ Feature: manage static blocks
 
   Scenario: deleting static block
     Given I am on the admin static blocks page
-    When I follow "Удалить" within "#content"
+    When I follow "Удалить" within xpath //tr[contains(.//text(),"home")]
     Then I should not see "home"

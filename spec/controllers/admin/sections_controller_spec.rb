@@ -199,4 +199,29 @@ describe Admin::SectionsController do
       end
     end
   end
+  
+  describe "DELETE destroy" do
+    let(:section){mock_model(Section).as_null_object}
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      Section.stub(:find).and_return section
+      section.stub(:destroy)
+    end
+    
+    it "finds deleted section" do
+      Section.should_receive(:find).with 1
+      delete :destroy, :locale => "ru", :id => 1
+    end
+    
+    it "destroys section" do
+      section.should_receive :destroy
+      delete :destroy, :locale => "ru", :id => 1
+    end
+    
+    it "redirects to index of sections" do
+      delete :destroy, :locale => "ru", :id => 1
+      response.should redirect_to(admin_sections_path)
+    end
+  end
 end
