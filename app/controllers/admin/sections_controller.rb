@@ -25,6 +25,7 @@ class Admin::SectionsController < Admin::IndexController
   end
   
   def edit
+    @section = Section.find params[:id]
   end
   
   def update

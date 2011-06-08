@@ -15,6 +15,7 @@ describe "admin/static_blocks/edit.html.haml" do
   it "renders a multilingual form to update a static blocks" do
     rendered.should have_selector("form", :method => "post",
                                 :action => admin_static_block_path(@static_block)) do |form|
+      form.should have_selector("input", :type => "hidden", :name => "_method",:value=>"put")
       form.should have_selector("input", :type => "text", :name => "static_block[name]")
       form.should have_selector("textarea", :name => "static_block[text_cs]")
       form.should have_selector("textarea", :name => "static_block[text_en]")

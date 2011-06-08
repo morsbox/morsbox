@@ -121,4 +121,24 @@ describe Admin::SectionsController do
       end
     end
   end
+  
+  describe "GET edit" do
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      @section = mock_model(Section, :id => 1, :name_ru=>"Web").as_null_object
+      Section.stub(:find).and_return @section
+    end
+    
+    it "assign @section" do
+      Section.should_receive(:find).with 1
+      get :edit, :locale => "ru", :id => 1
+      assigns(:section).should == @section
+    end
+    
+    it "renders edit view" do
+      get :edit, :locale => 'ru', :id => 1
+      response.should render_template(:edit)
+    end
+  end
 end

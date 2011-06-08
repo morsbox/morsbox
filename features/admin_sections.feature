@@ -13,8 +13,7 @@ Feature: manage sections
     When I follow "section_manager"
     Then I should see "Лого" within "#content"
     And I should see "Стиль" within "#content"
-  
-  @wip
+
   Scenario: creating new section - applying
     Given I am on the admin sections page
     When I follow "new_section"
