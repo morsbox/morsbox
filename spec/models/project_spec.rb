@@ -20,13 +20,13 @@ describe Project do
     end
     
     it "returns projects ordered by show_order" do
-      @second_project = Factory :project, :show_order => -1
-      Project.enabled.should == [@second_project,@project]
+      @second_project = Factory :project, :show_order => 1
+      Project.enabled.should == [@project,@second_project]
     end
     
     it "returns projects with equal show_order ordered by creation time" do
-      @second_project = Factory :project
-      Project.enabled.should == [@project,@second_project]
+      @second_project = Factory :project, :created_at => Time.now.tomorrow
+      Project.enabled.should == [@second_project,@project]
     end
   end
 end

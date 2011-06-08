@@ -78,6 +78,10 @@ Feature: manage sections
   
   @wip
   Scenario: changing show order of sections
+    Given I am on the admin sections page
+    When I fill in "section_show_order" with "1" within xpath //tr[contains(.//text(),"Лого")]
+    And I submit edit form for section "Лого"
+    Then the "section_show_order" field should contain "1" within xpath //tr[contains(.//text(),"Лого")]
   
   Scenario: deleting sections
     Given I am on the admin sections page

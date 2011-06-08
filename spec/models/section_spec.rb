@@ -11,13 +11,13 @@ describe Section do
     end
     
     it "returns sections ordered by show_order" do
-      @second_section = Factory  :section, :show_order => -1
-      Section.sorted.should == [@second_section,@section]
+      @second_section = Factory  :section, :show_order => 1
+      Section.sorted.should == [@section,@second_section]
     end
     
     it "returns sections with equal show_order ordered by creation time" do
-      @second_section = Factory :section
-      Section.sorted.should == [@section,@second_section]
+      @second_section = Factory :section, :created_at => Time.now.tomorrow
+      Section.sorted.should == [@second_section,@section]
     end
   end
   
@@ -36,13 +36,13 @@ describe Section do
     end
     
     it "returns sections ordered by show_order" do
-      @second_section = Factory  :section, :show_order => -1
-      Section.enabled.should == [@second_section,@section]
+      @second_section = Factory  :section, :show_order => 1
+      Section.enabled.should == [@section,@second_section]
     end
     
     it "returns sections with equal show_order ordered by creation time" do
-      @second_section = Factory :section
-      Section.enabled.should == [@section,@second_section]
+      @second_section = Factory :section, :created_at => Time.now.tomorrow
+      Section.enabled.should == [@second_section,@section]
     end
   end
 end

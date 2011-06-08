@@ -16,13 +16,13 @@ describe Description do
     end
     
     it "returns descriptions ordered by show_order" do
-      @second_description = Factory :description, :show_order => -1
-      Description.enabled.should == [@second_description,@description]
+      @second_description = Factory :description, :show_order => 1
+      Description.enabled.should == [@description,@second_description]
     end
     
     it "returns descriptions with equal show_order ordered by creation time" do
-      @second_description = Factory :description
-      Description.enabled.should == [@description,@second_description]
+      @second_description = Factory :description, :created_at => Time.now.tomorrow
+      Description.enabled.should == [@second_description,@description]
     end
   end
 end

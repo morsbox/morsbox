@@ -5,6 +5,6 @@ class Section < ActiveRecord::Base
   validates :name_ru, :presence => true
   has_many :projects
   
-  scope :sorted, order(:show_order, :created_at)
+  scope :sorted, order(:show_order, "created_at DESC")
   scope :enabled, where(:enabled=>true).sorted
 end
