@@ -22,8 +22,7 @@ Feature: manage projects
     Then I should see "Арбуз" within "#content"
     And I should see "Черешня" within "#content"
     And I should see "Мопс" within "#content"
-    
-  @wip
+
   Scenario: filtering projects
     Given I am on the admin projects page
     When I select "Стиль" from "section_id"

@@ -1,7 +1,12 @@
 class Admin::ProjectsController < Admin::IndexController
   def index
-    @projects = Project.sorted
     @admin_sections = Section.sorted
+    section = Section.find_by_id params[:section_id]
+    if section
+      @projects = section.projects.sorted
+    else
+      @projects = Project.sorted
+    end
   end
   
   def new

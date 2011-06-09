@@ -21,8 +21,10 @@ describe Admin::ProjectsController do
       @request.env["devise.mapping"] = Devise.mappings[:admin]
       sign_in Factory.create(:admin)
       @section = mock_model(Section).as_null_object
+      @section.stub_chain(:projects,:sorted).and_return []
       @project = mock_model(Project).as_null_object
       Project.stub(:sorted).and_return [@project]
+      Section.stub(:find_by_id).and_return nil
       Section.stub(:sorted).and_return [@section]
     end
     
@@ -31,9 +33,24 @@ describe Admin::ProjectsController do
       assigns(:admin_sections).should == [@section]
     end
     
-    it "assign @projects" do
-      get :index, :locale => "ru"
-      assigns(:projects).should == [@project]
+    it "checks section filter" do
+      Section.should_receive(:find_by_id).with '1'
+      get :index, :locale => "ru", :section_id => '1'
+    end
+    
+    context "when no section filter" do
+      it "assign @projects" do
+        get :index, :locale => "ru"
+        assigns(:projects).should == [@project]
+      end
+    end
+  
+    context "when section filter present" do
+      it "assign @projects only belonging to this section" do
+        Section.stub(:find_by_id).and_return @section
+        get :index, :locale => "ru", :section_id => '1'
+        assigns(:projects).should == []
+      end
     end
     
     it "renders index view" do
