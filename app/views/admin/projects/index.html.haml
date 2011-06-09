@@ -1,0 +1,16 @@
+#content.wide
+  %h1= t.project.manager
+  = link_to t.project.new, new_admin_project_path, :id => "new_project"
+  %table
+    %tr
+      %th= t.admin.name
+      %th= t.admin.actions
+    - @projects.each do |project|
+      %tr
+        %td= link_to project.name, edit_admin_project_path(project)
+        %td
+          = link_to_toggle project
+          = form_for [:admin, project] do |f|
+            = f.text_field :show_order
+            = f.submit :class => :hidden
+          = link_to t.admin.delete, admin_project_path(project), :method => :delete, :confirm => t.admin.delete_confirmation

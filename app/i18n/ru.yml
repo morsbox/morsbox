@@ -8,6 +8,7 @@ admin:
     logout: Выйти
     name: Имя
     profile: Мой профиль
+    projects: Проекты
     sections: Разделы
     statics: Блоки статики
 
