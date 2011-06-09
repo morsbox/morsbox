@@ -12,4 +12,5 @@
           = link_to_toggle section
           = form_for [:admin, section] do |f|
             = f.text_field :show_order
+            = f.submit :class => :hidden
           = link_to t.admin.delete, admin_section_path(section), :method => :delete, :confirm => t.admin.delete_confirmation

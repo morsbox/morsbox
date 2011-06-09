@@ -54,7 +54,7 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
 end
 
 When /^(?:|I )submit "([^"]*)"$/ do |form|
-  submit_form(form)
+  When %{I press "" within "form##{form}"}
 end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|

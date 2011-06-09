@@ -75,8 +75,7 @@ Feature: manage sections
     When I follow "Выкл." within xpath //tr[contains(.//text(),"Лого")]
     Then I should see "Вкл." within xpath //tr[contains(.//text(),"Лого")]
     And I should see "Лого" within ".menu"
-  
-  @wip
+
   Scenario: changing show order of sections
     Given I am on the admin sections page
     When I fill in "section_show_order" with "1" within xpath //tr[contains(.//text(),"Лого")]
