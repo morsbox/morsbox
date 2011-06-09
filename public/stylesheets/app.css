@@ -10,7 +10,7 @@ body {
 /* special */
 
 .hidden {
-  display: hidden;
+  display: none;
 }
 
 .clear {

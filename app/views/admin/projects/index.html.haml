@@ -1,14 +1,20 @@
 #content.wide
   %h1= t.project.manager
   = link_to t.project.new, new_admin_project_path, :id => "new_project"
+  = form_tag admin_projects_path, :method => :get, :id => :section_filter_form do
+    = select_tag :section_id, options_for_select([["---",0]]+@admin_sections.map{ |s| [s.name, s.id]}, params[:section_id])
+    = submit_tag "", :class => :hidden
   %table
     %tr
       %th= t.admin.name
+      %th= t.project.section
       %th= t.admin.actions
     - @projects.each do |project|
       %tr
         %td= link_to project.name, edit_admin_project_path(project)
+        %td= project.section.name
         %td
+          = link_to t.project.view, project_path(project)
           = link_to_toggle project
           = form_for [:admin, project] do |f|
             = f.text_field :show_order

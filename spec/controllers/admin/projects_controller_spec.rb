@@ -20,8 +20,15 @@ describe Admin::ProjectsController do
     before :each do
       @request.env["devise.mapping"] = Devise.mappings[:admin]
       sign_in Factory.create(:admin)
+      @section = mock_model(Section).as_null_object
       @project = mock_model(Project).as_null_object
       Project.stub(:sorted).and_return [@project]
+      Section.stub(:sorted).and_return [@section]
+    end
+    
+    it "assign @admin_sections" do
+      get :index, :locale => "ru"
+      assigns(:admin_sections).should == [@section]
     end
     
     it "assign @projects" do
