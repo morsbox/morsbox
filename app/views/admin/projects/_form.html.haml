@@ -1,0 +1,16 @@
+= form_for [:admin, @project] do |f|
+  = f.label :section_id
+  = f.select :section_id, [["---",nil]]+@admin_sections.map{ |s| [s.name, s.id]}
+  = f.label :name_cs
+  = f.text_field :name_cs
+  = f.label :name_en
+  = f.text_field :name_en
+  = f.label :name_ru
+  = f.text_field :name_ru
+  = f.label :enabled
+  = f.check_box :enabled
+  = f.label :show_order
+  = f.text_field :show_order
+  = f.submit
+  = f.submit t.admin.apply, :id => "project_apply", :name => "apply"
+= link_to t.project.back, admin_projects_path

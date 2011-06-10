@@ -58,4 +58,35 @@ describe Admin::ProjectsController do
       response.should render_template(:index)
     end
   end
+  
+  describe "GET new" do
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      @section = mock_model(Section).as_null_object
+      @project = mock_model(Project).as_null_object
+      Section.stub(:sorted).and_return [@section]
+      Project.stub(:new).and_return @project
+    end
+    
+    it "assigns new project to @project" do
+      get :new, :locale => 'en'
+      assigns[:project].should == @project
+    end
+    
+    it "creates new project from flash[:project]" do
+      Project.should_receive(:new).with "name_ru"=>"Room"
+      get :new, {:locale => 'en'}, nil, {:project => {"name_ru"=>"Room"}}
+    end
+    
+    it "assign @admin_sections" do
+      get :index, :locale => "ru"
+      assigns(:admin_sections).should == [@section]
+    end
+    
+    it "renders new template" do
+      get :new, :locale => 'en'
+      response.should render_template(:new)
+    end
+  end
 end

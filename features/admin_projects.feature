@@ -38,7 +38,7 @@ Feature: manage projects
     Then I should be on the new admin project page
     
     When I fill in "project_name_ru" with "Такса"
-    And I select "Стиль" from "project_section"
+    And I select "Стиль" from "project_section_id"
     And I check "project_enabled"
     And I press "project_apply"
     Then I should be on the edit admin project "Такса" page

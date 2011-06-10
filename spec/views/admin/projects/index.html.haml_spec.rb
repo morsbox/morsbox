@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "admin/projects/index.html.haml" do
   before :each do
     R18n.set(R18n::I18n.new('ru'))
-    @section = mock_model(Section, :name=>"Logo").as_null_object
+    @section = mock_model(Section, :name=>"Logo", :id=>1).as_null_object
     @project = mock_model(Project, :name=>"Cherry").as_null_object
     @project.stub(:section).and_return @section
     assign :admin_sections, [@section]
@@ -15,7 +15,7 @@ describe "admin/projects/index.html.haml" do
     rendered.should have_selector("form", :method => "get",
                                   :action => admin_projects_path) do |form|
       form.should have_selector("select", :name => "section_id") do |s|
-        s.should have_selector("option") do |opt|
+        s.should have_selector("option", :value => "1") do |opt|
           opt.should contain("Logo")
         end
       end

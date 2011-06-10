@@ -10,6 +10,8 @@ class Admin::ProjectsController < Admin::IndexController
   end
   
   def new
+    @admin_sections = Section.sorted
+    @project = Project.new flash[:project]
   end
   
   def create
