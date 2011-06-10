@@ -108,19 +108,57 @@ Feature: manage projects
     
   @wip
   Scenario: listing descriptions
+    When I am on the edit admin project "Черешня" page
+    Then I should see "Черешня" within "#content h3"
+    And I should see "Сочная, нежная!" within "#content"
+    And I should see "Девушкам полезная." within "#content"
+    And I should see element "img[src*='demo.jpg']"
+    And I should see element "img[src*='demo2.jpg']"
     
   @wip
   Scenario: creating new description
+    Given I am on the edit admin project "Черешня" page
+    When I attach the file "demo3.jpg" to "description_image" within "form#new_description"
+    And I fill in "description_text_ru" with "Down Down" within "form#new_description"
+    And I press "description_submit" within "form#new_description"
+    Then I should be on the edit admin project "Черешня" page
+    And I should see element ".notice"
+    And I should see "Down Down" within "#content"
+    And I should see element "img[src*='demo3.jpg']"
     
   @wip
   Scenario: editing description
-    
+    Given I am on the edit admin project "Черешня" page
+    When I attach the file "demo3.jpg" to "description_image" within first edit description form
+    And I fill in "description_text_ru" with "Down Down" within first edit description form
+    And I press "description_submit" within first edit description form
+    Then I should be on the edit admin project "Черешня" page
+    And I should see element ".notice"
+    And I should see "Down Down" within "#content"
+    And I should see element "img[src*='demo3.jpg']"
+    But I should not see "Черешня" within "#content h3"
+    And I should not see element "img[src*='demo.jpg']"
+  
+  @wip
+  Scenario: deleting image
+    Given I am on the edit admin project "Черешня" page
+    When I check "description_image_file_name" within first edit description form
+    And I press "description_submit" within first edit description form
+    Then I should not see element "img[src*='demo.jpg']"
+  
   @wip
   Scenario: toggling ativity of description
+    Given I am on the edit admin project "Черешня" page
+    When I follow "Вкл." within xpath //tr[contains(.//text(),"Сочная, нежная!")]
+    Then I should see "Выкл." within xpath //tr[contains(.//text(),"Сочная, нежная!")]
     
-  @wip
-  Scenario: changing show order of descriptions
-    
+    When I follow "Выкл." within xpath //tr[contains(.//text(),"Сочная, нежная!")]
+    Then I should see "Вкл." within xpath //tr[contains(.//text(),"Сочная, нежная!")]
+
   @wip
   Scenario: deleting description
+    Given I am on the edit admin project "Черешня" page
+    When I follow "Удалить" within xpath //tr[contains(.//text(),"Сочная, нежная!")]
+    Then I should not see "Сочная, нежная!"
+    And I should see element ".notice"
   

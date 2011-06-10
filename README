@@ -1,3 +1,11 @@
 Private portfolio site
 
 An excercise of applying behavior-driven development with RSpec and Cucumber
+
+TODO list:
+  1. Верстку форм и таблиц в админке
+  2. Нотайсы при удалении
+  3. Верстку для нотайсов
+  4. Скрипт на фильтр секций
+  5. Скрипт для форм description
+  6. Запенденные спеки

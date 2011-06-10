@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/Mik-die/rspec-mocks.git
-  revision: e3724430e1b4b8daa104ebc61e1752e895e2ba3a
+  revision: 918c32f175f9c8341168b72dc5cdfa6b3412ff21
   branch: patch-1
   specs:
     rspec-mocks (2.6.0)
