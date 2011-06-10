@@ -152,4 +152,31 @@ describe Admin::ProjectsController do
       end
     end
   end
+  
+  describe "GET edit" do
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      @section = mock_model(Section).as_null_object
+      @project = mock_model(Project, :id => 1, :name_ru=>"Room").as_null_object
+      Section.stub(:sorted).and_return [@section]
+      Project.stub(:find).and_return @project
+    end
+    
+    it "assigns @project" do
+      Project.should_receive(:find).with 1
+      get :edit, :locale => "ru", :id => 1
+      assigns(:project).should == @project
+    end
+    
+    it "assigns @admin_sections" do
+      get :edit, :locale => "ru", :id => 1
+      assigns(:admin_sections).should == [@section]
+    end
+    
+    it "renders edit view" do
+      get :edit, :locale => 'ru', :id => 1
+      response.should render_template(:edit)
+    end
+  end
 end

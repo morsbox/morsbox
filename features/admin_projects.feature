@@ -30,8 +30,7 @@ Feature: manage projects
     Then I should see "Мопс" within "#content"
     But I should not see "Арбуз" within "#content"
     And I should not see "Черешня" within "#content"
-    
-  @wip
+
   Scenario: creating new project - applying
     Given I am on the admin projects page
     When I follow "new_project"
@@ -44,12 +43,11 @@ Feature: manage projects
     Then I should be on the edit admin project "Такса" page
     And I should see element ".notice"
     And the "project_name_ru" field should contain "Такса"
-    
-  @wip
+
   Scenario: creating new project - saving
     Given I am on the new admin project page
     When I fill in "project_name_ru" with "Такса"
-    And I select "Стиль" from "project_section"
+    And I select "Стиль" from "project_section_id"
     And I press "project_submit"
     Then I should be on the admin projects page
     And I should see element ".notice"

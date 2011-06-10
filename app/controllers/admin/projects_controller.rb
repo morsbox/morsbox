@@ -19,20 +19,22 @@ class Admin::ProjectsController < Admin::IndexController
   def create
     @project = Project.new params[:project]
     if @project.save
-      flash[:notice] = t.section.saved_successfully
+      flash[:notice] = t.project.saved_successfully
       if params[:apply]
         redirect_to edit_admin_project_path(@project)
       else
         redirect_to admin_projects_path
       end
     else
-      flash[:alert] = t.section.errors_occurred
+      flash[:alert] = t.project.errors_occurred
       flash[:project] = params[:project]
       redirect_to new_admin_project_path
     end
   end
   
   def edit
+    @admin_sections = Section.sorted
+    @project = Project.find params[:id]
   end
   
   def update

@@ -29,6 +29,9 @@ module NavigationHelpers
     when /the edit admin section "([^"]*)" page/
       edit_admin_section_path Section.find_by_name_ru($1)
     
+    when /the edit admin project "([^"]*)" page/
+      edit_admin_project_path Project.find_by_name_ru($1)
+    
     else
       begin
         page_name =~ /^the (.*) page$/

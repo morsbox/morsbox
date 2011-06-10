@@ -19,6 +19,14 @@ contacts:
 menu:
     contacts: контакты
 
+project:
+    back: Назад к списку проектов
+    edit: Редактор проекта
+    errors_occurred: "Произошли ошибки: "
+    manager: Менеджер проектов
+    new: Новый проект
+    saved_successfully: Проект успешно сохранен!
+
 section:
     back: Назад к списку разделов
     edit: Редактор раздела
