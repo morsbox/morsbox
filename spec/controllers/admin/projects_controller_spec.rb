@@ -89,4 +89,67 @@ describe Admin::ProjectsController do
       response.should render_template(:new)
     end
   end
+  
+  describe "POST create" do
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      @project = mock_model(Project).as_null_object
+      Project.stub(:new).and_return @project
+      @project.stub(:save).and_return true
+    end
+    
+    it "creates new project" do
+      Project.should_receive(:new).with "name_ru"=>"Room"
+      post :create, :locale => "ru", :project => {"name_ru"=>"Room"}
+    end
+    
+    it "saves project" do
+      @project.should_receive :save
+      post :create, :locale => "ru"
+    end
+    
+    it "nullifies empty translates from param hash" do
+      Project.should_receive(:new).with "name_ru"=>"Room","name_en"=>nil
+      post :create, :locale => "ru", :project=>{"name_ru"=>"Room","name_en"=>""}
+    end
+    
+    context "when saving is successful" do
+      it "sets flash[:notice]" do
+        post :create, :locale => "ru"
+        flash[:notice].should=~ /.+/
+      end
+      
+      it "redirects to edit this project if apply was passed" do
+        post :create, :locale => "ru", :apply => "foo"
+        response.should redirect_to(edit_admin_project_path(@project))
+      end
+      
+      it "redirects to index of projects if apply wasn't passed" do
+        post :create, :locale => "ru"
+        response.should redirect_to(admin_projects_path)
+      end
+    end
+    
+    context "when saving isn't successful" do
+      before :each do
+        @project.stub(:save).and_return false
+      end
+      
+      it "sets flash[:alert]" do
+        post :create, :locale => "ru"
+        flash[:alert].should=~ /.+/
+      end
+      
+      it "sets flash[:project] with params[:section]" do
+        post :create, :locale => 'en', :project => {"name_ru"=>"Room"}
+        flash[:project].should == {"name_ru"=>"Room"}
+      end
+      
+      it "redirects to new project" do
+        post :create, :locale => "ru"
+        response.should redirect_to(new_admin_project_path)
+      end
+    end
+  end
 end

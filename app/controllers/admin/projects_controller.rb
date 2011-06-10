@@ -1,4 +1,6 @@
 class Admin::ProjectsController < Admin::IndexController
+  before_filter(:only => [:create, :update]){ nullify_empty_values_from_params :project }
+  
   def index
     @admin_sections = Section.sorted
     section = Section.find_by_id params[:section_id]
@@ -15,6 +17,19 @@ class Admin::ProjectsController < Admin::IndexController
   end
   
   def create
+    @project = Project.new params[:project]
+    if @project.save
+      flash[:notice] = t.section.saved_successfully
+      if params[:apply]
+        redirect_to edit_admin_project_path(@project)
+      else
+        redirect_to admin_projects_path
+      end
+    else
+      flash[:alert] = t.section.errors_occurred
+      flash[:project] = params[:project]
+      redirect_to new_admin_project_path
+    end
   end
   
   def edit

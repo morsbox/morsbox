@@ -58,8 +58,7 @@ Feature: manage projects
     When I select "Стиль" from "section_id"
     And I submit "section_filter_form"
     Then I should see "Такса" within "#content"
-    
-  @wip
+
   Scenario: creating new project - failed
     Given I am on the new admin project page
     And I press "project_submit"
