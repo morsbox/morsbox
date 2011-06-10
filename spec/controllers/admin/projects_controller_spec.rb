@@ -237,4 +237,29 @@ describe Admin::ProjectsController do
       end
     end
   end
+  
+  describe "DELETE destroy" do
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      @project = mock_model(Project).as_null_object
+      Project.stub(:find).and_return @project
+      @project.stub(:destroy)
+    end
+    
+    it "finds deleted project" do
+      Project.should_receive(:find).with 1
+      delete :destroy, :locale => "ru", :id => 1
+    end
+    
+    it "destroys project" do
+      @project.should_receive :destroy
+      delete :destroy, :locale => "ru", :id => 1
+    end
+    
+    it "redirects to index of projects" do
+      delete :destroy, :locale => "ru", :id => 1
+      response.should redirect_to(admin_projects_path)
+    end
+  end
 end

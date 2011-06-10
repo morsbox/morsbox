@@ -100,8 +100,7 @@ Feature: manage projects
     When I fill in "project_show_order" with "1" within xpath //tr[contains(.//text(),"Черешня")]
     And I submit edit form for project "Черешня"
     Then the "project_show_order" field should contain "1" within xpath //tr[contains(.//text(),"Черешня")]
-    
-  @wip
+
   Scenario: deleting project
     Given I am on the admin projects page
     When I follow "Удалить" within xpath //tr[contains(.//text(),"Черешня")]
