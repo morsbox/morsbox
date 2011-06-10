@@ -62,8 +62,7 @@ Feature: manage projects
     And I press "project_submit"
     Then I should be on the new admin project page
     And I should see element ".alert"
-    
-  @wip
+
   Scenario: editing project
     Given I am on the admin projects page
     When I follow "Черешня" within "#content"
@@ -80,16 +79,14 @@ Feature: manage projects
     Then I should be on the admin projects page
     And I should see element ".notice"
     And I should see "Вишня" within "#content"
-    
-  @wip
+
   Scenario: editing project - failed
     Given I am on the edit admin project "Черешня" page
     When I fill in "project_name_ru" with ""
     And I press "project_submit"
     Then I should be on the edit admin project "Черешня" page
     And I should see element ".alert"
-  
-  @wip
+
   Scenario: toggling ativity of projects
     Given I am on the admin projects page
     When I follow "Вкл." within xpath //tr[contains(.//text(),"Черешня")]
@@ -97,8 +94,7 @@ Feature: manage projects
     
     When I follow "Выкл." within xpath //tr[contains(.//text(),"Черешня")]
     Then I should see "Вкл." within xpath //tr[contains(.//text(),"Черешня")]
-    
-  @wip
+
   Scenario: changing show order of projects
     Given I am on the admin projects page
     When I fill in "project_show_order" with "1" within xpath //tr[contains(.//text(),"Черешня")]

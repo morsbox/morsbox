@@ -38,6 +38,18 @@ class Admin::ProjectsController < Admin::IndexController
   end
   
   def update
+    @project = Project.find params[:id]
+    if @project.update_attributes params[:project]
+      flash[:notice] = t.project.saved_successfully
+      if params[:apply]
+        redirect_to edit_admin_project_path(@project)
+      else
+        redirect_to admin_projects_path
+      end
+    else
+      flash[:alert] = t.project.errors_occurred
+      redirect_to edit_admin_project_path(@project)
+    end
   end
   
   def destroy

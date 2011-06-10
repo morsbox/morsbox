@@ -179,4 +179,62 @@ describe Admin::ProjectsController do
       response.should render_template(:edit)
     end
   end
+  
+  describe "PUT update" do
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      @project = mock_model(Project).as_null_object
+      Project.stub(:find).and_return @project
+      @project.stub(:update_attributes).and_return true
+    end
+    
+    it "finds the project" do
+      Project.should_receive(:find).with 1
+      put :update, :locale => "ru", :id => 1
+    end
+    
+    it "updates attributes of project" do
+      @project.should_receive :update_attributes
+      put :update, :locale => "ru", :id => 1
+    end
+    
+    it "nullifies empty translates from param hash" do
+      @project.should_receive(:update_attributes).with "name_ru"=>"Room","name_en"=>nil
+      put :update, :locale => "ru", :id => 1, :project=>{"name_ru"=>"Room","name_en"=>""}
+    end
+    
+    context "when saving is successful" do
+      it "sets flash[:notice]" do
+        put :update, :locale => "ru", :id => 1
+        flash[:notice].should=~ /.+/
+      end
+      
+      it "redirects to edit this project if apply was passed" do
+        put :update, :locale => "ru", :id => 1, :apply => "foo"
+        response.should redirect_to(edit_admin_project_path(@project))
+      end
+      
+      it "redirects to index of projects if apply wasn't passed" do
+        put :update, :locale => "ru", :id => 1
+        response.should redirect_to(admin_projects_path)
+      end
+    end
+    
+    context "when saving isn't successful" do
+      before :each do
+        @project.stub(:update_attributes).and_return false
+      end
+      
+      it "sets flash[:alert]" do
+        put :update, :locale => "ru", :id => 1
+        flash[:alert].should=~ /.+/
+      end
+      
+      it "redirects to edit this project" do
+        put :update, :locale => "ru", :id => 1
+        response.should redirect_to(edit_admin_project_path(@project))
+      end
+    end
+  end
 end
