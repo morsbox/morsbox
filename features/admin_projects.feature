@@ -65,18 +65,51 @@ Feature: manage projects
     
   @wip
   Scenario: editing project
+    Given I am on the admin projects page
+    When I follow "Черешня" within "#content"
+    Then I should be on the edit admin project "Черешня" page
+    
+    When I fill in "project_name_en" with "Cherry"
+    And I press "project_apply"
+    Then I should be on the edit admin project "Черешня" page
+    And I should see element ".notice"
+    And the "project_name_en" field should contain "Cherry"
+    
+    When I fill in "project_name_ru" with "Вишня"
+    And I press "project_submit"
+    Then I should be on the admin projects page
+    And I should see element ".notice"
+    And I should see "Вишня" within "#content"
     
   @wip
   Scenario: editing project - failed
+    Given I am on the edit admin project "Черешня" page
+    When I fill in "project_name_ru" with ""
+    And I press "project_submit"
+    Then I should be on the edit admin project "Черешня" page
+    And I should see element ".alert"
   
   @wip
   Scenario: toggling ativity of projects
+    Given I am on the admin projects page
+    When I follow "Вкл." within xpath //tr[contains(.//text(),"Черешня")]
+    Then I should see "Выкл." within xpath //tr[contains(.//text(),"Черешня")]
+    
+    When I follow "Выкл." within xpath //tr[contains(.//text(),"Черешня")]
+    Then I should see "Вкл." within xpath //tr[contains(.//text(),"Черешня")]
     
   @wip
   Scenario: changing show order of projects
+    Given I am on the admin projects page
+    When I fill in "project_show_order" with "1" within xpath //tr[contains(.//text(),"Черешня")]
+    And I submit edit form for project "Черешня"
+    Then the "project_show_order" field should contain "1" within xpath //tr[contains(.//text(),"Черешня")]
     
   @wip
   Scenario: deleting project
+    Given I am on the admin projects page
+    When I follow "Удалить" within xpath //tr[contains(.//text(),"Черешня")]
+    Then I should not see "Черешня"
     
   @wip
   Scenario: listing descriptions
