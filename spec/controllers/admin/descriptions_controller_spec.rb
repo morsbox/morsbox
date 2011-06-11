@@ -41,7 +41,7 @@ describe Admin::DescriptionsController do
     
     it "sets flash[:notice]" do
       post :create, :locale => "ru", :project_id => 1
-      flash[:notice].should=~ /.+/
+      flash[:notice].should_not be_empty
     end
     
     it "redirects to edit project" do
@@ -81,7 +81,7 @@ describe Admin::DescriptionsController do
     
     it "sets flash[:notice]" do
       put :update, :locale => "ru", :project_id => 1, :id => 10
-      flash[:notice].should=~ /.+/
+      flash[:notice].should_not be_empty
     end
     
     it "redirects to edit project" do
@@ -113,7 +113,7 @@ describe Admin::DescriptionsController do
     
     it "sets flash[:notice]" do
       delete :destroy, :locale => "ru", :project_id => 1, :id => 10
-      flash[:notice].should=~ /.+/
+      flash[:notice].should_not be_empty
     end
     
     it "redirects to index of projects" do

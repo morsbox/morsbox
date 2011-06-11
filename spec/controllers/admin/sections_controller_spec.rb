@@ -86,7 +86,7 @@ describe Admin::SectionsController do
     context "when saving is successful" do
       it "sets flash[:notice]" do
         post :create, :locale => "ru"
-        flash[:notice].should=~ /.+/
+        flash[:notice].should_not be_empty
       end
       
       it "redirects to edit this section if apply was passed" do
@@ -107,7 +107,7 @@ describe Admin::SectionsController do
       
       it "sets flash[:alert]" do
         post :create, :locale => "ru"
-        flash[:alert].should=~ /.+/
+        flash[:alert].should_not be_empty
       end
       
       it "sets flash[:section] with params[:section]" do
@@ -169,7 +169,7 @@ describe Admin::SectionsController do
     context "when saving is successful" do
       it "sets flash[:notice]" do
         put :update, :locale => "ru", :id => 1
-        flash[:notice].should=~ /.+/
+        flash[:notice].should_not be_empty
       end
       
       it "redirects to edit this section if apply was passed" do
@@ -190,7 +190,7 @@ describe Admin::SectionsController do
       
       it "sets flash[:alert]" do
         put :update, :locale => "ru", :id => 1
-        flash[:alert].should=~ /.+/
+        flash[:alert].should_not be_empty
       end
       
       it "redirects to edit this section" do
@@ -221,7 +221,7 @@ describe Admin::SectionsController do
     
     it "sets flash[:notice]" do
       delete :destroy, :locale => "ru", :id => 1
-      flash[:notice].should=~ /.+/
+      flash[:notice].should_not be_empty
     end
     
     it "redirects to index of sections" do

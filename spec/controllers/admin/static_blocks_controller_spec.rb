@@ -78,7 +78,7 @@ describe Admin::StaticBlocksController do
     context "when saving is successful" do
       it "sets flash[:notice]" do
         put :update, :locale => "ru", :id => 1
-        flash[:notice].should=~ /.+/
+        flash[:notice].should_not be_empty
       end
       
       it "redirects to edit this static block if apply was passed" do
@@ -99,7 +99,7 @@ describe Admin::StaticBlocksController do
       
       it "sets flash[:alert]" do
         put :update, :locale => "ru", :id => 1
-        flash[:alert].should=~ /.+/
+        flash[:alert].should_not be_empty
       end
       
       it "redirects to edit this static block" do
@@ -130,7 +130,7 @@ describe Admin::StaticBlocksController do
     
     it "sets flash[:notice]" do
       delete :destroy, :locale => "ru", :id => 1
-      flash[:notice].should=~ /.+/
+      flash[:notice].should_not be_empty
     end
     
     it "redirects to index of static blocks" do

@@ -60,7 +60,7 @@ describe ContactsController do
     context "when saving succesfull" do
       it "sets flash[:notice]" do
         post :create, :locale => 'en'
-        flash[:notice].should=~ /.+/
+        flash[:notice].should_not be_empty
       end
       
       it "should deliver contact message in email" do
@@ -78,7 +78,7 @@ describe ContactsController do
       
       it "sets flash[:alert]" do
         post :create, :locale => 'en'
-        flash[:alert].should=~ /.+/
+        flash[:alert].should_not be_empty
       end
       
       it "sets flash[:contact] with params[:contact]" do
