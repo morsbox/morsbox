@@ -47,6 +47,7 @@ class Admin::SectionsController < Admin::IndexController
   def destroy
     @section = Section.find params[:id]
     @section.destroy
+    flash[:notice] = t.section.destroyed_successfully
     redirect_to admin_sections_path
   end
 end

@@ -27,6 +27,7 @@ class Admin::StaticBlocksController < Admin::IndexController
   def destroy
     @static_block = StaticBlock.find params[:id]
     @static_block.destroy
+    flash[:notice] = t.static_block.destroyed_successfully
     redirect_to admin_static_blocks_path
   end
 end

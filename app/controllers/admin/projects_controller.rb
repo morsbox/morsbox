@@ -56,6 +56,7 @@ class Admin::ProjectsController < Admin::IndexController
   def destroy
     @project = Project.find params[:id]
     @project.destroy
+    flash[:notice] = t.project.destroyed_successfully
     redirect_to admin_projects_path
   end
 end

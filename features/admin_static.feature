@@ -44,3 +44,4 @@ Feature: manage static blocks
     Given I am on the admin static blocks page
     When I follow "Удалить" within xpath //tr[contains(.//text(),"home")]
     Then I should not see "home"
+    And I should see element ".notice"

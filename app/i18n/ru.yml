@@ -28,6 +28,7 @@ menu:
 
 project:
     back: Назад к списку проектов
+    destroyed_successfully: Проект удален!
     edit: Редактор проекта
     errors_occurred: "Произошли ошибки: "
     manager: Менеджер проектов
@@ -36,6 +37,7 @@ project:
 
 section:
     back: Назад к списку разделов
+    destroyed_successfully: Раздел удален!
     edit: Редактор раздела
     errors_occurred: "Произошли ошибки: "
     manager: Менеджер разделов
@@ -44,6 +46,7 @@ section:
 
 static_block:
     back: Назад к списку блоков статики
+    destroyed_successfully: Блок статики удален!
     edit: Редактор блока статики
     errors_occurred: "Произошли ошибки: "
     manager: Менеджер блоков статики

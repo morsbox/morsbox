@@ -86,3 +86,4 @@ Feature: manage sections
     Given I am on the admin sections page
     When I follow "Удалить" within xpath //tr[.//text()="Лого"]
     Then I should not see "Лого"
+    And I should see element ".notice"

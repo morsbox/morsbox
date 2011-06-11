@@ -264,6 +264,11 @@ describe Admin::ProjectsController do
       delete :destroy, :locale => "ru", :id => 1
     end
     
+    it "sets flash[:notice]" do
+      delete :destroy, :locale => "ru", :id => 1
+      flash[:notice].should=~ /.+/
+    end
+    
     it "redirects to index of projects" do
       delete :destroy, :locale => "ru", :id => 1
       response.should redirect_to(admin_projects_path)
