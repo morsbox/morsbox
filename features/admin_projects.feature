@@ -123,18 +123,17 @@ Feature: manage projects
     And I should see element ".notice"
     And I should see "Down Down" within "#content"
     And I should see element "img[src*='demo3.jpg']"
-    
-  @wip
+
   Scenario: editing description
     Given I am on the edit admin project "Черешня" page
-    When I attach the file "demo3.jpg" to "description_image" within first edit description form
+    When I attach the file "features/demo/demo3.jpg" to "description_image" within first edit description form
     And I fill in "description_text_ru" with "Down Down" within first edit description form
     And I press "description_submit" within first edit description form
     Then I should be on the edit admin project "Черешня" page
     And I should see element ".notice"
     And I should see "Down Down" within "#content"
     And I should see element "img[src*='demo3.jpg']"
-    But I should not see "Черешня" within "#content h3"
+    But I should not see element "#content h3"
     And I should not see element "img[src*='demo.jpg']"
   
   @wip

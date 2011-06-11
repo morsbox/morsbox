@@ -21,12 +21,12 @@ describe Admin::DescriptionsController do
       @descriptions.stub(:create)
     end
     
-    it "fins project" do
+    it "finds project" do
       Project.should_receive(:find).with 1
       post :create, :locale => "ru", :project_id => 1
     end
     
-    it "creates new project" do
+    it "creates new description" do
       @descriptions.should_receive(:create).with "text_ru"=>"I See You"
       post :create, :locale => "ru", :project_id => 1,
            :description => {"text_ru"=>"I See You"}
@@ -46,6 +46,46 @@ describe Admin::DescriptionsController do
     
     it "redirects to edit project" do
       post :create, :locale => "ru", :project_id => 1
+      response.should redirect_to(edit_admin_project_path(@project))
+    end
+  end
+  
+  describe "PUT update" do
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      @project = mock_model(Project).as_null_object
+      Project.stub(:find).and_return @project
+      @description = mock_model(Description).as_null_object
+      @project.stub(:descriptions, :find).and_return @description
+      @description.stub(:update_attributes)
+    end
+    
+    it "finds project" do
+      Project.should_receive(:find).with 1
+      put :update, :locale => "ru", :project_id => 1, :id => 10
+    end
+    
+    it "updates description" do
+      @description.should_receive(:update_attributes).with "text_ru"=>"I See You"
+      put :update, :locale => "ru", :project_id => 1,
+          :description => {"text_ru"=>"I See You"}, :id => 10
+    end
+ 
+    it "nullifies empty translates from param hash" do
+      @description.should_receive(:update_attributes).with "text_ru"=>"I See You",
+                                                           "text_en"=>nil
+      put :update, :locale => "ru", :project_id => 1,
+          :description=>{"text_ru"=>"I See You","text_en"=>""}, :id => 10
+    end
+    
+    it "sets flash[:notice]" do
+      put :update, :locale => "ru", :project_id => 1, :id => 10
+      flash[:notice].should=~ /.+/
+    end
+    
+    it "redirects to edit project" do
+      put :update, :locale => "ru", :project_id => 1, :id => 10
       response.should redirect_to(edit_admin_project_path(@project))
     end
   end

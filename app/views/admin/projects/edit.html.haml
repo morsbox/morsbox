@@ -15,3 +15,5 @@
           = link_to t.admin.delete, admin_project_description_path(@project, description), :method => :delete, :confirm => t.admin.delete_confirmation
 
 = render "admin/descriptions/form", :description => Description.new
+- @descriptions.each do |description|
+  = render "admin/descriptions/form", :description => description

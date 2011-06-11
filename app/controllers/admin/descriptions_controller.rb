@@ -9,6 +9,10 @@ class Admin::DescriptionsController < Admin::IndexController
   end
   
   def update
+    description = @project.descriptions.find params[:id]
+    description.update_attributes params[:description]
+    flash[:notice] = t.description.saved_successfully
+    redirect_to edit_admin_project_path(@project)
   end
   
   def destroy

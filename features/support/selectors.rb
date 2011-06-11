@@ -11,6 +11,9 @@ module HtmlSelectorsHelpers
     when "the page"
       "html > body"
 
+    when "first edit description form"
+      "form#edit_description_#{Description.first.id}"
+      
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
