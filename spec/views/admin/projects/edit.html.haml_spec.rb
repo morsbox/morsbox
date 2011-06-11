@@ -67,5 +67,23 @@ describe "admin/projects/edit.html.haml" do
         
       end
     end
+    
+    it "renders form for new description" do
+      render
+      rendered.should have_selector("form", :method => "post",
+                          :enctype => "multipart/form-data",
+                          :action => admin_project_descriptions_path(@project)) do |form|
+        form.should have_selector("input", :type => "file",
+                                  :name => "description[image]")
+        form.should have_selector("textarea", :name => "description[text_cs]")
+        form.should have_selector("textarea", :name => "description[text_en]")
+        form.should have_selector("textarea", :name => "description[text_ru]")
+        form.should have_selector("input", :type => "checkbox",
+                                  :name => "description[enabled]")
+        form.should have_selector("input", :type => "text",
+                                  :name => "description[show_order]")
+        form.should have_selector("input", :type => "submit")
+      end
+    end
   end
 end

@@ -1,0 +1,14 @@
+= form_for [:admin, @project, description], :html => { :multipart => true } do |f|
+  = f.label :image
+  = f.file_field :image
+  = f.label :text_cs
+  = f.text_area :text_cs
+  = f.label :text_en
+  = f.text_area :text_en
+  = f.label :text_ru
+  = f.text_area :text_ru
+  = f.label :enabled
+  = f.check_box :enabled
+  = f.label :show_order
+  = f.text_field :show_order
+  = f.submit

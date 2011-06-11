@@ -13,3 +13,5 @@
         %td
           = link_to_toggle [@project, description]
           = link_to t.admin.delete, admin_project_description_path(@project, description), :method => :delete, :confirm => t.admin.delete_confirmation
+
+= render "admin/descriptions/form", :description => Description.new

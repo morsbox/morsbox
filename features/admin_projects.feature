@@ -113,11 +113,10 @@ Feature: manage projects
     And I should see "Девушкам полезная." within "#content"
     And I should see element "img[src*='demo.jpg']"
     And I should see element "img[src*='demo2.jpg']"
-    
-  @wip
+
   Scenario: creating new description
     Given I am on the edit admin project "Черешня" page
-    When I attach the file "demo3.jpg" to "description_image" within "form#new_description"
+    When I attach the file "features/demo/demo3.jpg" to "description_image" within "form#new_description"
     And I fill in "description_text_ru" with "Down Down" within "form#new_description"
     And I press "description_submit" within "form#new_description"
     Then I should be on the edit admin project "Черешня" page

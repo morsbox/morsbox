@@ -16,6 +16,12 @@ contacts:
     message_sent: Ваше сообщение было отправлено
     message_errors: "Произошли ошибки: "
 
+description:
+    image: Изображение
+    new: Новое описание
+    saved_successfully: Описание успешно сохранено!
+    text: Текст
+
 menu:
     contacts: контакты
 
