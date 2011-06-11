@@ -35,6 +35,7 @@ class Admin::ProjectsController < Admin::IndexController
   def edit
     @admin_sections = Section.sorted
     @project = Project.find params[:id]
+    @descriptions = @project.descriptions.ordered
   end
   
   def update

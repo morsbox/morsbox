@@ -105,8 +105,7 @@ Feature: manage projects
     Given I am on the admin projects page
     When I follow "Удалить" within xpath //tr[contains(.//text(),"Черешня")]
     Then I should not see "Черешня"
-    
-  @wip
+
   Scenario: listing descriptions
     When I am on the edit admin project "Черешня" page
     Then I should see "Черешня" within "#content h3"

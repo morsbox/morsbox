@@ -1,6 +1,22 @@
 require 'spec_helper'
 
 describe Description do
+  describe "scope :ordered" do
+    before :each do
+      @description = Factory :description
+    end
+    
+    it "returns descriptions ordered by show_order" do
+      @second_description = Factory :description, :show_order => 1
+      Description.ordered.should == [@description,@second_description]
+    end
+    
+    it "returns descriptions with equal show_order ordered by creation time" do
+      @second_description = Factory :description, :created_at => Time.now.tomorrow
+      Description.ordered.should == [@second_description,@description]
+    end
+  end
+  
   describe "scope :enabled" do
     before :each do
       @description = Factory :description

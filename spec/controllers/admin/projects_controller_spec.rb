@@ -161,6 +161,8 @@ describe Admin::ProjectsController do
       @project = mock_model(Project, :id => 1, :name_ru=>"Room").as_null_object
       Section.stub(:sorted).and_return [@section]
       Project.stub(:find).and_return @project
+      @description = mock_model(Description).as_null_object
+      @project.stub_chain(:descriptions, :ordered).and_return [@description]
     end
     
     it "assigns @project" do
@@ -172,6 +174,11 @@ describe Admin::ProjectsController do
     it "assigns @admin_sections" do
       get :edit, :locale => "ru", :id => 1
       assigns(:admin_sections).should == [@section]
+    end
+    
+    it "assigns @descriptions" do
+      get :edit, :locale => "ru", :id => 1
+      assigns(:descriptions).should == [@description]
     end
     
     it "renders edit view" do
