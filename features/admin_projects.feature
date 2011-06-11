@@ -135,8 +135,7 @@ Feature: manage projects
     And I should see element "img[src*='demo3.jpg']"
     But I should not see element "#content h3"
     And I should not see element "img[src*='demo.jpg']"
-  
-  @wip
+
   Scenario: deleting image
     Given I am on the edit admin project "Черешня" page
     When I check "description_image_file_name" within first edit description form

@@ -95,6 +95,8 @@ describe "admin/projects/edit.html.haml" do
                                   :value=>"put")
         form.should have_selector("input", :type => "file",
                                   :name => "description[image]")
+        form.should have_selector("input", :type => "checkbox", :value => "",
+                                  :name => "description[image_file_name]")
         form.should have_selector("textarea", :name => "description[text_cs]")
         form.should have_selector("textarea", :name => "description[text_en]")
         form.should have_selector("textarea", :name => "description[text_ru]")
