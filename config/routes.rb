@@ -5,7 +5,9 @@ Morsbox::Application.routes.draw do
     resources :index
     resources :static_blocks, :except => [:new, :create, :show]
     resources :sections, :except => :show
-    resources :projects, :except => :show
+    resources :projects, :except => :show do
+      resources :descriptions, :only => [:create, :update, :destroy]
+    end
     root :to => "index#index"
   end
 
