@@ -68,21 +68,21 @@ Feature: manage sections
 
   Scenario: toggling ativity of sections
     Given I am on the admin sections page
-    When I follow "Вкл." within xpath //tr[contains(.//text(),"Лого")]
-    Then I should see "Выкл." within xpath //tr[contains(.//text(),"Лого")]
+    When I follow "Вкл." within xpath //tr[.//text()="Лого"]
+    Then I should see "Выкл." within xpath //tr[.//text()="Лого"]
     And I should not see "Лого" within ".menu"
     
-    When I follow "Выкл." within xpath //tr[contains(.//text(),"Лого")]
-    Then I should see "Вкл." within xpath //tr[contains(.//text(),"Лого")]
+    When I follow "Выкл." within xpath //tr[.//text()="Лого"]
+    Then I should see "Вкл." within xpath //tr[.//text()="Лого"]
     And I should see "Лого" within ".menu"
 
   Scenario: changing show order of sections
     Given I am on the admin sections page
-    When I fill in "section_show_order" with "1" within xpath //tr[contains(.//text(),"Лого")]
+    When I fill in "section_show_order" with "1" within xpath //tr[.//text()="Лого"]
     And I submit edit form for section "Лого"
-    Then the "section_show_order" field should contain "1" within xpath //tr[contains(.//text(),"Лого")]
-  
+    Then the "section_show_order" field should contain "1" within xpath //tr[.//text()="Лого"]
+
   Scenario: deleting sections
     Given I am on the admin sections page
-    When I follow "Удалить" within xpath //tr[contains(.//text(),"Лого")]
+    When I follow "Удалить" within xpath //tr[.//text()="Лого"]
     Then I should not see "Лого"

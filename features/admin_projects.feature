@@ -89,21 +89,21 @@ Feature: manage projects
 
   Scenario: toggling ativity of projects
     Given I am on the admin projects page
-    When I follow "Вкл." within xpath //tr[contains(.//text(),"Черешня")]
-    Then I should see "Выкл." within xpath //tr[contains(.//text(),"Черешня")]
+    When I follow "Вкл." within xpath //tr[.//text()="Черешня"]
+    Then I should see "Выкл." within xpath //tr[.//text()="Черешня"]
     
-    When I follow "Выкл." within xpath //tr[contains(.//text(),"Черешня")]
-    Then I should see "Вкл." within xpath //tr[contains(.//text(),"Черешня")]
+    When I follow "Выкл." within xpath //tr[.//text()="Черешня"]
+    Then I should see "Вкл." within xpath //tr[.//text()="Черешня"]
 
   Scenario: changing show order of projects
     Given I am on the admin projects page
-    When I fill in "project_show_order" with "1" within xpath //tr[contains(.//text(),"Черешня")]
+    When I fill in "project_show_order" with "1" within xpath //tr[.//text()="Черешня"]
     And I submit edit form for project "Черешня"
-    Then the "project_show_order" field should contain "1" within xpath //tr[contains(.//text(),"Черешня")]
+    Then the "project_show_order" field should contain "1" within xpath //tr[.//text()="Черешня"]
 
   Scenario: deleting project
     Given I am on the admin projects page
-    When I follow "Удалить" within xpath //tr[contains(.//text(),"Черешня")]
+    When I follow "Удалить" within xpath //tr[.//text()="Черешня"]
     Then I should not see "Черешня"
 
   Scenario: listing descriptions
@@ -141,20 +141,19 @@ Feature: manage projects
     When I check "description_image_file_name" within first edit description form
     And I press "description_submit" within first edit description form
     Then I should not see element "img[src*='demo.jpg']"
-  
-  @wip
+
   Scenario: toggling ativity of description
     Given I am on the edit admin project "Черешня" page
-    When I follow "Вкл." within xpath //tr[contains(.//text(),"Сочная, нежная!")]
-    Then I should see "Выкл." within xpath //tr[contains(.//text(),"Сочная, нежная!")]
+    When I follow "Вкл." within xpath //tr[.//text()="Сочная, нежная!"]
+    Then I should see "Выкл." within xpath //tr[.//text()="Сочная, нежная!"]
     
-    When I follow "Выкл." within xpath //tr[contains(.//text(),"Сочная, нежная!")]
-    Then I should see "Вкл." within xpath //tr[contains(.//text(),"Сочная, нежная!")]
+    When I follow "Выкл." within xpath //tr[.//text()="Сочная, нежная!"]
+    Then I should see "Вкл." within xpath //tr[.//text()="Сочная, нежная!"]
 
   @wip
   Scenario: deleting description
     Given I am on the edit admin project "Черешня" page
-    When I follow "Удалить" within xpath //tr[contains(.//text(),"Сочная, нежная!")]
+    When I follow "Удалить" within xpath //tr[.//text()="Сочная, нежная!"]
     Then I should not see "Сочная, нежная!"
     And I should see element ".notice"
   
