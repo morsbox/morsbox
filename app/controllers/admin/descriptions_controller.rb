@@ -16,6 +16,10 @@ class Admin::DescriptionsController < Admin::IndexController
   end
   
   def destroy
+    description = @project.descriptions.find params[:id]
+    description.destroy
+    flash[:notice] = t.description.destroyed_successfully
+    redirect_to edit_admin_project_path(@project)
   end
 
 private

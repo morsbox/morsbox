@@ -89,4 +89,36 @@ describe Admin::DescriptionsController do
       response.should redirect_to(edit_admin_project_path(@project))
     end
   end
+  
+  describe "DELETE destroy" do
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in Factory.create(:admin)
+      @project = mock_model(Project).as_null_object
+      Project.stub(:find).and_return @project
+      @description = mock_model(Description).as_null_object
+      @project.stub(:descriptions, :find).and_return @description
+      @description.stub(:destroy)
+    end
+    
+    it "finds project" do
+      Project.should_receive(:find).with 1
+      delete :destroy, :locale => "ru", :project_id => 1, :id => 10
+    end
+    
+    it "destroys project" do
+      @description.should_receive :destroy
+      delete :destroy, :locale => "ru", :project_id => 1, :id => 10
+    end
+    
+    it "sets flash[:notice]" do
+      delete :destroy, :locale => "ru", :project_id => 1, :id => 10
+      flash[:notice].should=~ /.+/
+    end
+    
+    it "redirects to index of projects" do
+      delete :destroy, :locale => "ru", :project_id => 1, :id => 10
+      response.should redirect_to(edit_admin_project_path(@project))
+    end
+  end
 end

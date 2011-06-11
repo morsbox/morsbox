@@ -17,6 +17,7 @@ contacts:
     message_errors: "Произошли ошибки: "
 
 description:
+    destroyed_successfully: Описание удалено!
     image: Изображение
     new: Новое описание
     saved_successfully: Описание успешно сохранено!

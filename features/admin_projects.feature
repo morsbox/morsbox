@@ -150,7 +150,6 @@ Feature: manage projects
     When I follow "Выкл." within xpath //tr[.//text()="Сочная, нежная!"]
     Then I should see "Вкл." within xpath //tr[.//text()="Сочная, нежная!"]
 
-  @wip
   Scenario: deleting description
     Given I am on the edit admin project "Черешня" page
     When I follow "Удалить" within xpath //tr[.//text()="Сочная, нежная!"]
