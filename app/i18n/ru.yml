@@ -82,6 +82,9 @@ devise:
 menu:
     contacts: контакты
 
+pages:
+    not_found: Страница не найдена
+    
 project:
     back: Назад к списку проектов
     destroyed_successfully: Проект удален!

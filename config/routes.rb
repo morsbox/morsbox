@@ -15,6 +15,9 @@ Morsbox::Application.routes.draw do
   resources :projects, :only => :show
   resources :contacts, :only => [:index, :create]
   root :to => "pages#index"
+  ActionDispatch::Routing::Translator.translate_from_file('config','i18n-routes.yml')
+  
+  match "(:locale)/*wrong" => "pages#404", :locale => /cs|en|ru/
+  match "*wrong" => "pages#404"
 end
 
-ActionDispatch::Routing::Translator.translate_from_file('config','i18n-routes.yml')

@@ -82,6 +82,9 @@ devise:
 menu:
     contacts: contacts
 
+pages:
+    not_found: Page not found
+
 project:
     back: Back to projects' list
     destroyed_successfully: Project was successfully destroyed!
