@@ -7,3 +7,4 @@ db/schema.rb
 *~
 public/system
 public/system/*
+deploy.rb
