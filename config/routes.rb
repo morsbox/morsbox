@@ -8,7 +8,7 @@ Morsbox::Application.routes.draw do
     resources :projects, :except => :show do
       resources :descriptions, :only => [:create, :update, :destroy]
     end
-    root :to => "index#index"
+    root :to => "projects#index"
   end
 
   resources :sections, :only => :show

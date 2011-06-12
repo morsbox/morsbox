@@ -107,3 +107,10 @@ li.separated {
   min-width: 640px;
   margin:0 70px 30px 0;
 }
+
+/* elements */
+.notice, .alert {
+  position: absolute;
+  right: 0;
+  width: 400px;
+}
