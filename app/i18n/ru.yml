@@ -1,3 +1,50 @@
+activerecord:
+    attributes:
+        admin:
+            current_password: Текущий пароль
+            email: Email
+            password: Пароль
+            password_confirmation: Подтверждение пароля
+            remember_me: Запомните меня
+        contact_message:
+            email: Ваш email
+            message: Ваше сообщение
+            name: Ваше имя
+            phone: Ваш телефон
+        description:
+            enabled: Включено?
+            image: Изображение
+            image_file_name: Удалить изображение?
+            show_order: Порядок отображения
+            text_cs: Чешский текст
+            text_en: Английский текст
+            text_ru: Русский текст
+        project:
+            enabled: Включено?
+            name_cs: Чешское название
+            name_en: Английское название
+            name_ru: Русское название
+            section_id: Раздел
+            show_order: Порядок отображения
+        section:
+            enabled: Включено?
+            name_cs: Чешское название
+            name_en: Английское название
+            name_ru: Русское название
+            show_order: Порядок отображения
+        static_block:
+            name: Название
+            text_cs: Чешский текст
+            text_en: Английский текст
+            text_ru: Русский текст
+    models:
+        admin: Администратор
+        contact_message: Сообщение
+        description: Описание
+        project: Проект
+        section: Раздел
+        static_block: Блок статики
+
 admin:
     actions: Действия
     apply: Применить
@@ -23,6 +70,15 @@ description:
     saved_successfully: Описание успешно сохранено!
     text: Текст
 
+devise:
+    back: Назад
+    edit_admin: Редактирование учетной записи администратора
+    forgot_your_password: Забыли пароль?
+    leave_blank: (оставьте пустым, если не хотите его менять)
+    need_current_password: (текущий пароль необходим для подтверждения изменений)
+    send_me_reset: Выслать инструкции по сбросу пароля
+    sign_in: Вход в администраторскую зону
+
 menu:
     contacts: контакты
 
@@ -34,6 +90,8 @@ project:
     manager: Менеджер проектов
     new: Новый проект
     saved_successfully: Проект успешно сохранен!
+    section: Раздел
+    view: Просмотр
 
 section:
     back: Назад к списку разделов

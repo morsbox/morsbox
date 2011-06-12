@@ -4,6 +4,6 @@ class StaticBlock < ActiveRecord::Base
   translations :text
   
   def self.get_block name
-    find_by_name(name) || create(:name => name)
+    find_by_name(name) || create(:name => name, :text_ru => "")
   end
 end

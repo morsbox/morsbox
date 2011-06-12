@@ -1,6 +1,111 @@
+activerecord:
+    attributes:
+        admin:
+            current_password: Current password
+            email: Email
+            password: Password
+            password_confirmation: Password confirmation
+            remember_me: Remember me
+        contact_message:
+            email: Your email
+            message: Your message
+            name: Your name
+            phone: Your phone number
+        description:
+            enabled: Enabled?
+            image: Image
+            image_file_name: Delete image?
+            show_order: Show order
+            text_cs: Czech text
+            text_en: English text
+            text_ru: Russian text
+        project:
+            enabled: Enabled?
+            name_cs: Czech name
+            name_en: English name
+            name_ru: Russian name
+            section_id: Section
+            show_order: Show order
+        section:
+            enabled: Enabled?
+            name_cs: Czech name
+            name_en: English name
+            name_ru: Russian name
+            show_order: Show order
+        static_block:
+            name: Name
+            text_cs: Czech text
+            text_en: English text
+            text_ru: Russian text
+    models:
+        admin: Administrator
+        contact_message: Message
+        description: Description
+        project: Project
+        section: Section
+        static_block: Static block
+
+admin:
+    actions: Actions
+    apply: Apply
+    delete: Delete
+    delete_confirmation: Are you sure?
+    disabled: "OFF"
+    enabled: "ON"
+    logout: Logout
+    name: Name
+    profile: My profile
+    projects: Projects
+    sections: Sections
+    statics: Static blocks
+
 contacts:
     message_sent: Your message was sent
     message_errors: "Errors occurred: "
 
+description:
+    destroyed_successfully: Description was successfully destroyed!
+    image: Image
+    new: New description
+    saved_successfully: Description was successfully saved!
+    text: Text
+
+devise:
+    back: Back
+    edit_admin: Edit admin account
+    forgot_your_password: Forgot your password?
+    leave_blank: (leave blank if you don't want to change it)
+    need_current_password: (we need your current password to confirm your changes)
+    send_me_reset: Send me instructions to reset my password
+    sign_in: Sign in admin zone
+
 menu:
     contacts: contacts
+
+project:
+    back: Back to projects' list
+    destroyed_successfully: Project was successfully destroyed!
+    edit: Edit project
+    errors_occurred: "Errors occurred: "
+    manager: Project manager
+    new: New project
+    saved_successfully: Project was successfully saved!
+    section: Section
+    view: View
+
+section:
+    back: Back to sections' list
+    destroyed_successfully: Section was successfully destroyed!
+    edit: Edit section manager
+    errors_occurred: "Errors occurred: "
+    manager: Section manager
+    new: New section
+    saved_successfully: Section was successfully saved!
+
+static_block:
+    back: Back to static blocks' list
+    destroyed_successfully: Static block was successfully destroyed!
+    edit: Edit static block
+    errors_occurred: "Errors occurred: "
+    manager: Static block manager
+    saved_successfully: Static block was successfully saved!
