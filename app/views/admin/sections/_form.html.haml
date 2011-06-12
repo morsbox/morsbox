@@ -1,14 +1,24 @@
 = form_for [:admin, @section] do |f|
-  = f.label :name_cs
-  = f.text_field :name_cs
-  = f.label :name_en
-  = f.text_field :name_en
-  = f.label :name_ru
-  = f.text_field :name_ru
-  = f.label :enabled
-  = f.check_box :enabled
-  = f.label :show_order
-  = f.text_field :show_order
-  = f.submit
-  = f.submit t.admin.apply, :id => "section_apply", :name => "apply"
+  %p.column
+    = f.label :name_cs
+    %br
+    = f.text_field :name_cs
+  %p.column
+    = f.label :name_en
+    %br
+    = f.text_field :name_en
+  %p.column
+    = f.label :name_ru
+    %br
+    = f.text_field :name_ru
+  %p
+    = f.check_box :enabled
+    = f.label :enabled
+  %p
+    = f.label :show_order
+    %br
+    = f.text_field :show_order
+  %p
+    = f.submit
+    = f.submit t.admin.apply, :id => "section_apply", :name => "apply"
 = link_to t.section.back, admin_sections_path

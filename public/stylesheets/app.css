@@ -114,3 +114,22 @@ li.separated {
   right: 0;
   width: 400px;
 }
+
+p.column {
+  float:left;
+  width:30%;
+  padding-right:2%;
+}
+
+p.column textarea, p.column input {
+  width:100%;
+}
+
+p.narrow textarea {
+  width:90%;
+  height:80px;
+}
+
+a.dialog_open {
+  cursor: pointer;
+}
