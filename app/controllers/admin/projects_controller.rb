@@ -26,7 +26,7 @@ class Admin::ProjectsController < Admin::IndexController
         redirect_to admin_projects_path
       end
     else
-      flash[:alert] = t.project.errors_occurred
+      flash[:alert] = t.project.errors_occurred + @project.errors.full_messages*", "
       flash[:project] = params[:project]
       redirect_to new_admin_project_path
     end
@@ -48,7 +48,7 @@ class Admin::ProjectsController < Admin::IndexController
         redirect_to admin_projects_path
       end
     else
-      flash[:alert] = t.project.errors_occurred
+      flash[:alert] = t.project.errors_occurred + @project.errors.full_messages*", "
       redirect_to edit_admin_project_path(@project)
     end
   end

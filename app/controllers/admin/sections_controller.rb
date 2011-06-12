@@ -19,7 +19,7 @@ class Admin::SectionsController < Admin::IndexController
         redirect_to admin_sections_path
       end
     else
-      flash[:alert] = t.section.errors_occurred
+      flash[:alert] = t.section.errors_occurred + @section.errors.full_messages*", "
       flash[:section] = params[:section]
       redirect_to new_admin_section_path
     end
@@ -39,7 +39,7 @@ class Admin::SectionsController < Admin::IndexController
         redirect_to admin_sections_path
       end
     else
-      flash[:alert] = t.section.errors_occurred
+      flash[:alert] = t.section.errors_occurred + @section.errors.full_messages*", "
       redirect_to edit_admin_section_path(@section)
     end
   end

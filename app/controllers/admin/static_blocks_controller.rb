@@ -19,7 +19,7 @@ class Admin::StaticBlocksController < Admin::IndexController
         redirect_to admin_static_blocks_path
       end
     else
-      flash[:alert] = t.static_block.errors_occurred
+      flash[:alert] = t.static_block.errors_occurred+@static_block.errors.full_messages*", "
       redirect_to edit_admin_static_block_path(@static_block)
     end
   end
