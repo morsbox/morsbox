@@ -1,6 +1,7 @@
 #content.wide
   %h1= t.project.edit
   = render "form"
+  %a.dialog_open{:dialog_id => :dialog_new_description}= t.description.new
   %table
     %tr
       %th= t.description.image
@@ -11,9 +12,13 @@
         %td= image_tag description.image.url(:thumb)
         %td!= description.text
         %td
+          %a.dialog_open{:dialog_id => "dialog_description_"+description.id.to_s}
+            = t.description.edit
           = link_to_toggle [@project, description]
           = link_to t.admin.delete, admin_project_description_path(@project, description), :method => :delete, :confirm => t.admin.delete_confirmation
 
-= render "admin/descriptions/form", :description => Description.new
+#dialog_new_description.dialog_description
+  = render "admin/descriptions/form", :description => Description.new
 - @descriptions.each do |description|
-  = render "admin/descriptions/form", :description => description
+  #dialog_description.dialog_description{:id => description.id}
+    = render "admin/descriptions/form", :description => description
