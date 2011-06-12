@@ -45,4 +45,14 @@ describe Section do
       Section.enabled.should == [@second_section,@section]
     end
   end
+  
+  describe "#projects" do
+    it "nullify project's section_id when destroy" do
+      @section = Factory :section
+      @project = Factory :project
+      @section.projects << @project
+      @section.destroy
+      @project.reload.section_id.should be_nil
+    end
+  end
 end

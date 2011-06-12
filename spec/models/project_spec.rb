@@ -45,4 +45,13 @@ describe Project do
       Project.enabled.should == [@second_project,@project]
     end
   end
+  
+  describe "#descriptions" do
+    it "also destroy descriptions when destroy" do
+      @project = Factory :project
+      @description = Factory :description
+      @project.descriptions << @description
+      lambda{ @project.destroy }.should change(Description, :count)
+    end
+  end
 end
