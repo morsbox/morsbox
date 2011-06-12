@@ -1,6 +1,114 @@
+activerecord:
+    attributes:
+        admin:
+            current_password: Platné heslo
+            email: Email
+            password: Heslo
+            password_confirmation: Potvrzení hesla
+            remember_me: Přihlásit se trvale na tomto počítači
+        contact_message:
+            email: Váš email
+            message: Váše oznámení
+            name: Váše jmeno
+            phone: Váš telefon
+        description:
+            enabled: Zapnouto?
+            image: Obraz
+            image_file_name: Vymazat obrazu?
+            show_order: Řád zobrazení
+            text_cs: Český text
+            text_en: Anglický text
+            text_ru: Ruský text
+        project:
+            enabled: Zapnouto?
+            name_cs: Český  název
+            name_en: Anglický název
+            name_ru: Ruský název
+            section_id: Rubrika
+            show_order: Řád zobrazení
+        section:
+            enabled: Zapnouto?
+            name_cs: Český název
+            name_en: Anglický název
+            name_ru: Ruský název
+            show_order: Řád zobrazení
+        static_block:
+            name: Název
+            text_cs: Český text
+            text_en: Anglický text
+            text_ru: Ruský text
+    models:
+        admin: Administrátor
+        contact_message: Oznámení
+        description: Popis
+        project: Projekt
+        section: Rubrika
+        static_block: Stálé bloky
+
+admin:
+    actions: Činný
+    apply: Použít 	 
+    delete: Vymazat 
+    delete_confirmation: Jsou jistí?
+    disabled: Vypínání
+    enabled: Zapínání
+    logout: Vyjít
+    name: Jmeno
+    profile: Moje profil
+    projects: Projekt
+    sections: Rubriky
+    statics: Stálé bloky
+
 contacts:
-    message_sent: Vaše zpráva byla poslat
-    message_errors: "Došlo k chybám: "
+    message_sent: Váše oznámení bylo odeslané 
+    message_errors: "Vznikly chyby: "
+
+description:
+    destroyed_successfully: Popis je vymazan!
+    image: Obraz
+    new: Nový popis
+    saved_successfully: Popis je úspěšně zachován!
+    text: Text
+
+devise:
+    back: Zpět
+    edit_admin: Upravování evidenční zápisu administrátora
+    forgot_your_password:  Zapomněli heslo?
+    leave_blank: (nechate prázdného hesla, jestli nechcete vyměňovat)
+    need_current_password: (platné heslo třeba v potvrzení změn)
+    send_me_reset: Poslat směrnici pro sběru hesla
+    sign_in: Vstup do administrátorské zóny
 
 menu:
-    contacts: kontakt
+    contacts: kontakty
+
+pages:
+    not_found: Stránka není nalezena
+	
+project:
+    back: Zpět k seznamu projektů
+    destroyed_successfully: Projekt je vymazan!
+    edit: Editor projektu
+    errors_occurred: "Vznikly chyby: "
+    manager: Manažer projektů
+    new: Nový projekt
+    saved_successfully: Projekt je úspěšně zachován!
+    section: Rubrika
+    view: Prohlédnutí
+
+section:
+    back: Zpět k seznamu rubrik
+    destroyed_successfully: Rubrika je vymazana!
+    edit: Editor rubriky
+    errors_occurred: "Vznikly chyby: "
+    manager: Manažer rubrik
+    new: Nová rubrika
+    saved_successfully: Rubrika je úspěšně zachována!
+
+static_block:
+    back: Zpět k seznamu stálých bloků
+    destroyed_successfully: Stálý blok je vymazen!
+    edit: Editor stálého bloku
+    errors_occurred: "Vznikly chyby: "
+    manager: Manažer stálého bloku
+    saved_successfully: Stálý blok je úspěšně zachován!
