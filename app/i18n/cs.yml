@@ -46,7 +46,7 @@ activerecord:
         static_block: Stálé bloky
 
 admin:
-    actions: Činný
+    actions: Činy
     apply: Použít 	 
     delete: Vymazat 
     delete_confirmation: Jsou jistí?

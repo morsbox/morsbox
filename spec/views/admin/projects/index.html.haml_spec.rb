@@ -33,6 +33,14 @@ describe "admin/projects/index.html.haml" do
       table.should contain("Logo")
     end
   end
+  
+  it "renders '---' when no project's section" do
+    @project.stub(:section).and_return nil
+    render
+    rendered.should have_selector("table") do |table|
+      table.should contain("---")
+    end
+  end
 
   it "shows link to edit project" do
     render
