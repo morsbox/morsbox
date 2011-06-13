@@ -1,3 +1,5 @@
 Private portfolio site
 
 An excercise of applying behavior-driven development with RSpec and Cucumber
+
+Production version with bugfixes for ruby 1.8

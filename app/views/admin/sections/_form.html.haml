@@ -1,21 +1,21 @@
 = form_for [:admin, @section] do |f|
   %p.column
-    = f.label :name_cs
+    = f.label :name_cs, @section.class.human_attribute_name(:name_cs)
     %br
     = f.text_field :name_cs
   %p.column
-    = f.label :name_en
+    = f.label :name_en, @section.class.human_attribute_name(:name_en)
     %br
     = f.text_field :name_en
   %p.column
-    = f.label :name_ru
+    = f.label :name_ru, @section.class.human_attribute_name(:name_ru)
     %br
     = f.text_field :name_ru
   %p
     = f.check_box :enabled
-    = f.label :enabled
+    = f.label :enabled, @section.class.human_attribute_name(:enabled)
   %p
-    = f.label :show_order
+    = f.label :show_order, @section.class.human_attribute_name(:show_order)
     %br
     = f.text_field :show_order
   %p

@@ -2,19 +2,19 @@
   != @contact_info
   = form_for @contact, :as => :contact, :url => contacts_path do |f|
     %p
-      = f.label :name
+      = f.label :name, @contact.class.human_attribute_name(:name)
       %br
       = f.text_field :name
     %p
-      = f.label :email
+      = f.label :email, @contact.class.human_attribute_name(:email)
       %br
       = f.text_field :email
     %p
-      = f.label :phone
+      = f.label :phone, @contact.class.human_attribute_name(:phone)
       %br
       = f.text_field :phone
     %p
-      = f.label :message
+      = f.label :message, @contact.class.human_attribute_name(:message)
       %br
       = f.text_area :message
     %p= f.submit

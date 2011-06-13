@@ -2,19 +2,19 @@
   %h1= t.static_block.edit
   = form_for [:admin, @static_block] do |f|
     %p
-      = f.label :name
+      = f.label :name, @static_block.class.human_attribute_name(:name)
       %br
       = f.text_field :name
     %p.column
-      = f.label :text_cs
+      = f.label :text_cs, @static_block.class.human_attribute_name(:text_cs)
       %br
       = f.text_area :text_cs
     %p.column
-      = f.label :text_en
+      = f.label :text_en, @static_block.class.human_attribute_name(:text_en)
       %br
       = f.text_area :text_en
     %p.column
-      = f.label :text_ru
+      = f.label :text_ru, @static_block.class.human_attribute_name(:text_ru)
       %br
       = f.text_area :text_ru
     %p

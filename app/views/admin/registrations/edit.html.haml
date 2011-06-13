@@ -3,20 +3,20 @@
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
     = devise_error_messages!  
     %p
-      = f.label :email
+      = f.label :email, resource.class.human_attribute_name(:email)
       %br
       = f.email_field :email
     %p
-      = f.label :password
+      = f.label :password, resource.class.human_attribute_name(:password)
       %i= t.devise.leave_blank
       %br
       = f.password_field :password
     %p
-      = f.label :password_confirmation
+      = f.label :password_confirmation, resource.class.human_attribute_name(:password_confirmation)
       %br
       = f.password_field :password_confirmation
     %p
-      = f.label :current_password
+      = f.label :current_password, resource.class.human_attribute_name(:current_password)
       %i= t.devise.need_current_password
       %br
       = f.password_field :current_password

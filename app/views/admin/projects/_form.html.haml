@@ -1,25 +1,25 @@
 = form_for [:admin, @project] do |f|
   %p
-    = f.label :section_id
+    = f.label :section_id, @project.class.human_attribute_name(:section_id)
     %br
     = f.select :section_id, [["---",nil]]+@admin_sections.map{ |s| [s.name, s.id]}
   %p.column
-    = f.label :name_cs
+    = f.label :name_cs, @project.class.human_attribute_name(:name_cs)
     %br
     = f.text_field :name_cs
   %p.column
-    = f.label :name_en
+    = f.label :name_en, @project.class.human_attribute_name(:name_en)
     %br
     = f.text_field :name_en
   %p.column
-    = f.label :name_ru
+    = f.label :name_ru, @project.class.human_attribute_name(:name_ru)
     %br
     = f.text_field :name_ru
   %p
     = f.check_box :enabled
-    = f.label :enabled
+    = f.label :enabled, @project.class.human_attribute_name(:enabled)
   %p
-    = f.label :show_order
+    = f.label :show_order, @project.class.human_attribute_name(:show_order)
     %br
     = f.text_field :show_order
   %p
