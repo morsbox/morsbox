@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/Mik-die/rspec-mocks.git
-  revision: 918c32f175f9c8341168b72dc5cdfa6b3412ff21
-  branch: patch-1
-  specs:
-    rspec-mocks (2.6.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -141,6 +134,7 @@ GEM
     rspec-core (2.6.4)
     rspec-expectations (2.6.0)
       diff-lcs (~> 1.1.2)
+    rspec-mocks (2.6.0)
     rspec-rails (2.6.1)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
@@ -185,7 +179,6 @@ DEPENDENCIES
   r18n-rails
   rails (= 3.0.8)
   rake (= 0.8.7)
-  rspec-mocks!
   rspec-rails
   translate_routes
   webrat
