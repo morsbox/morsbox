@@ -7,4 +7,5 @@ db/schema.rb
 *~
 public/system
 public/system/*
-deploy.rb
+config/deploy.rb
+Capfile
