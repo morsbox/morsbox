@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.8'
+gem 'rails', '3.0.10'
 gem 'rake', '0.8.7'         # remove this line when rails 3.1
 gem 'mysql2', '= 0.2.7'     # version needed for rails 3.0
 
@@ -28,8 +28,8 @@ gem 'paperclip', '~> 2.3'
 # Testing gems
 group :development, :test do
   gem "rspec-rails"
-  # until bug with :to_ary not fixed:
-  # gem "rspec-mocks", :git => "git://github.com/Mik-die/rspec-mocks.git", :branch => "patch-1"
+  # until bugfix with :to_ary not incuded into gem:
+  gem "rspec-mocks", :git => "git://github.com/rspec/rspec-mocks.git"
   gem "cucumber-rails"
   gem 'webrat'
   gem 'capybara', "= 1.0.0.beta1"   # remove this line when rails 3.1
