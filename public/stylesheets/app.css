@@ -66,12 +66,16 @@ li.separated {
 }
 
 #left_dark li a {
-  color: #bfbfbf;
+  color: #fefefe;
   text-decoration: none;
 }
 
-#left_dark li a:hover, #left_dark li.selected a {
-  color: #fefefe;
+#left_dark li.selected a {
+  color: #bfbfbf;
+}
+
+#left_dark li a:hover {
+  color: #EC2127;
 }
 
 #left_light ul {
@@ -83,8 +87,13 @@ li.separated {
   text-decoration: none;
 }
 
-#left_light li a:hover, #left_light li.selected a {
+#left_light li.selected a {
   color: #ababab;
+  text-decoration: underline;
+}
+
+#left_light li a:hover {
+  color: #EC2127;
 }
 
 #content {
