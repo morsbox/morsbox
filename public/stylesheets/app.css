@@ -142,3 +142,10 @@ p.narrow textarea {
 a.dialog_open {
   cursor: pointer;
 }
+
+/* admin */
+span.show_order {
+  color:#333;
+  font-weight: bold;
+  padding: 2px;
+}

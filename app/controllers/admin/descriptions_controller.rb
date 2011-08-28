@@ -3,7 +3,7 @@ class Admin::DescriptionsController < Admin::IndexController
   before_filter(:only => [:create, :update]){ nullify_empty_values_from_params :description }
   
   def create
-    @project.descriptions.create params[:description]
+    @project.descriptions.create(params[:description]).move_to_top
     flash[:notice] = t.description.saved_successfully
     redirect_to edit_admin_project_path(@project)
   end

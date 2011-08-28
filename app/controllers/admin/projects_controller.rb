@@ -22,6 +22,7 @@ class Admin::ProjectsController < Admin::IndexController
   def create
     @project = Project.new params[:project]
     if @project.save
+      @project.move_to_top
       flash[:notice] = t.project.saved_successfully
       if params[:apply]
         redirect_to edit_admin_project_path(@project)

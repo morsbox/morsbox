@@ -16,9 +16,5 @@
         %td
           = link_to t.project.view, project_path(project)
           = link_to_toggle project
-          = link_to "<<", admin_project_path(project, :order => :top), :method => :put
-          = link_to "<", admin_project_path(project, :order => :up), :method => :put
-          = project.show_order
-          = link_to ">", admin_project_path(project, :order => :down), :method => :put
-          = link_to ">>", admin_project_path(project, :order => :bottom), :method => :put
-          = link_to t.admin.delete, admin_project_path(project), :method => :delete, :confirm => t.admin.delete_confirmation
+          = sort_links project
+          = link_to image_tag("del.png"), admin_project_path(project), :method => :delete, :confirm => t.admin.delete_confirmation

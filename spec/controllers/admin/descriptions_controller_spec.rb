@@ -18,7 +18,7 @@ describe Admin::DescriptionsController do
       Project.stub(:find).and_return @project
       @descriptions = mock(:descriptions)
       @project.stub(:descriptions).and_return @descriptions
-      @descriptions.stub(:create)
+      @descriptions.stub_chain(:create, :move_to_top)
     end
     
     it "finds project" do

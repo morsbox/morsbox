@@ -12,6 +12,7 @@ class Admin::SectionsController < Admin::IndexController
   def create
     @section = Section.new params[:section]
     if @section.save
+      @section.move_to_top
       flash[:notice] = t.section.saved_successfully
       if params[:apply]
         redirect_to edit_admin_section_path(@section)
