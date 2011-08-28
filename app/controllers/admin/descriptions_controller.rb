@@ -11,6 +11,7 @@ class Admin::DescriptionsController < Admin::IndexController
   def update
     description = @project.descriptions.find params[:id]
     description.update_attributes params[:description]
+    change_order(description) if params[:order]
     flash[:notice] = t.description.saved_successfully
     redirect_to edit_admin_project_path(@project)
   end

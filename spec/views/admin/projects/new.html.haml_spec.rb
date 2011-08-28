@@ -21,7 +21,6 @@ describe "admin/projects/new.html.haml" do
       form.should have_selector("input", :type => "text", :name => "project[name_en]")
       form.should have_selector("input", :type => "text", :name => "project[name_ru]")
       form.should have_selector("input", :type => "checkbox", :name => "project[enabled]")
-      form.should have_selector("input", :type => "text", :name => "project[show_order]")
       form.should have_selector("select", :name => "project[section_id]") do |s|
         s.should have_selector("option", :value => "1") do |opt|
           opt.should contain("Logo")

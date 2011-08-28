@@ -76,12 +76,6 @@ Feature: manage sections
     Then I should see "Вкл." within xpath //tr[.//text()="Лого"]
     And I should see "Лого" within ".menu"
 
-  Scenario: changing show order of sections
-    Given I am on the admin sections page
-    When I fill in "section_show_order" with "1" within xpath //tr[.//text()="Лого"]
-    And I submit edit form for section "Лого"
-    Then the "section_show_order" field should contain "1" within xpath //tr[.//text()="Лого"]
-
   Scenario: deleting sections
     Given I am on the admin sections page
     When I follow "Удалить" within xpath //tr[.//text()="Лого"]

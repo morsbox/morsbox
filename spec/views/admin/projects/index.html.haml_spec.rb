@@ -52,13 +52,16 @@ describe "admin/projects/index.html.haml" do
     render
   end
   
-  it "shows form for editing show_order" do
+  it "shows links for editing show_order" do
     render
-    rendered.should have_selector("form", :method => "post",
-                                  :action => admin_project_path(@project)) do |form|
-      form.should have_selector("input", :type => "hidden", :name => "_method",:value=>"put")
-      form.should have_selector("input", :type => "text", :name => "project[show_order]")
-    end
+    rendered.should have_selector("a", "data-method" => "put",
+                                :href => admin_project_path(@project, :order => :top))
+    rendered.should have_selector("a", "data-method" => "put",
+                                :href => admin_project_path(@project, :order => :up))
+    rendered.should have_selector("a", "data-method" => "put",
+                                :href => admin_project_path(@project, :order => :down))
+    rendered.should have_selector("a", "data-method" => "put",
+                                :href => admin_project_path(@project, :order => :bottom))
   end
   
   it "shows link to destroy project" do

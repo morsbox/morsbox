@@ -21,7 +21,7 @@ describe Admin::SectionsController do
       @request.env["devise.mapping"] = Devise.mappings[:admin]
       sign_in Factory.create(:admin)
       @section = mock_model(Section).as_null_object
-      Section.stub(:sorted).and_return [@section]
+      Section.stub(:all).and_return [@section]
     end
     
     it "assign @admin_sections" do

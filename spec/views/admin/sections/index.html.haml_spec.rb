@@ -22,13 +22,16 @@ describe "admin/sections/index.html.haml" do
     render
   end
   
-  it "shows form for editing show_order" do
+  it "shows links for editing show_order" do
     render
-    rendered.should have_selector("form", :method => "post",
-                                  :action => admin_section_path(@section)) do |form|
-      form.should have_selector("input", :type => "hidden", :name => "_method",:value=>"put")
-      form.should have_selector("input", :type => "text", :name => "section[show_order]")
-    end
+    rendered.should have_selector("a", "data-method" => "put",
+                                :href => admin_section_path(@section, :order => :top))
+    rendered.should have_selector("a", "data-method" => "put",
+                                :href => admin_section_path(@section, :order => :up))
+    rendered.should have_selector("a", "data-method" => "put",
+                                :href => admin_section_path(@section, :order => :down))
+    rendered.should have_selector("a", "data-method" => "put",
+                                :href => admin_section_path(@section, :order => :bottom))
   end
   
   it "shows link to destroy section" do

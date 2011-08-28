@@ -2,7 +2,7 @@ class Admin::SectionsController < Admin::IndexController
   before_filter(:only => [:create, :update]){ nullify_empty_values_from_params :section }
   
   def index
-    @admin_sections = Section.sorted
+    @admin_sections = Section.all
   end
   
   def new
@@ -33,6 +33,7 @@ class Admin::SectionsController < Admin::IndexController
     @section = Section.find params[:id]
     if @section.update_attributes params[:section]
       flash[:notice] = t.section.saved_successfully
+      change_order(@section) if params[:order]
       if params[:apply]
         redirect_to edit_admin_section_path(@section)
       else

@@ -20,7 +20,6 @@ describe "admin/sections/edit.html.haml" do
       form.should have_selector("input", :type => "text", :name => "section[name_en]")
       form.should have_selector("input", :type => "text", :name => "section[name_ru]")
       form.should have_selector("input", :type => "checkbox", :name => "section[enabled]")
-      form.should have_selector("input", :type => "text", :name => "section[show_order]")
       form.should have_selector("input", :type => "submit", :name => "commit")
       form.should have_selector("input", :type => "submit", :name => "apply")
     end

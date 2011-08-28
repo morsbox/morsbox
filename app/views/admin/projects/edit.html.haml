@@ -16,6 +16,11 @@
         %td!= description.text
         %td
           = link_to_toggle [@project, description]
+          = link_to "<<", admin_project_description_path(@project, description, :order => :top), :method => :put
+          = link_to "<", admin_project_description_path(@project, description, :order => :up), :method => :put
+          = description.show_order
+          = link_to ">", admin_project_description_path(@project, description, :order => :down), :method => :put
+          = link_to ">>", admin_project_description_path(@project, description, :order => :bottom), :method => :put
           = link_to t.admin.delete, admin_project_description_path(@project, description), :method => :delete, :confirm => t.admin.delete_confirmation
 
 #dialog_new_description.dialog_description

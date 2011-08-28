@@ -15,17 +15,17 @@ describe Admin::ProjectsController do
     delete :destroy, :locale => 'ru', :id => 1
     response.should redirect_to(new_admin_session_path)
   end
-    
+
   describe "GET index" do
     before :each do
       @request.env["devise.mapping"] = Devise.mappings[:admin]
       sign_in Factory.create(:admin)
       @section = mock_model(Section).as_null_object
-      @section.stub_chain(:projects,:sorted).and_return []
+      @section.stub_chain(:projects).and_return []
       @project = mock_model(Project).as_null_object
-      Project.stub(:sorted).and_return [@project]
+      Project.stub(:all).and_return [@project]
       Section.stub(:find_by_id).and_return nil
-      Section.stub(:sorted).and_return [@section]
+      Section.stub(:all).and_return [@section]
     end
     
     it "assign @admin_sections" do
@@ -65,7 +65,7 @@ describe Admin::ProjectsController do
       sign_in Factory.create(:admin)
       @section = mock_model(Section).as_null_object
       @project = mock_model(Project).as_null_object
-      Section.stub(:sorted).and_return [@section]
+      Section.stub(:all).and_return [@section]
       Project.stub(:new).and_return @project
     end
     
@@ -159,10 +159,10 @@ describe Admin::ProjectsController do
       sign_in Factory.create(:admin)
       @section = mock_model(Section).as_null_object
       @project = mock_model(Project, :id => 1, :name_ru=>"Room").as_null_object
-      Section.stub(:sorted).and_return [@section]
+      Section.stub(:all).and_return [@section]
       Project.stub(:find).and_return @project
       @description = mock_model(Description).as_null_object
-      @project.stub_chain(:descriptions, :ordered).and_return [@description]
+      @project.stub_chain(:descriptions).and_return [@description]
     end
     
     it "assigns @project" do

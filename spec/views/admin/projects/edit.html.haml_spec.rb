@@ -24,7 +24,6 @@ describe "admin/projects/edit.html.haml" do
       form.should have_selector("input", :type => "text", :name => "project[name_en]")
       form.should have_selector("input", :type => "text", :name => "project[name_ru]")
       form.should have_selector("input", :type => "checkbox", :name => "project[enabled]")
-      form.should have_selector("input", :type => "text", :name => "project[show_order]")
       form.should have_selector("select", :name => "project[section_id]") do |s|
         s.should have_selector("option", :value => "1") do |opt|
           opt.should contain("Logo")
@@ -59,7 +58,19 @@ describe "admin/projects/edit.html.haml" do
         view.should_receive(:link_to_toggle).with [@project, @description]
         render
       end
-      
+
+      it "shows links for editing show_order" do
+        render
+        rendered.should have_selector("a", "data-method" => "put",
+            :href => admin_project_description_path(@project, @description, :order => :top))
+        rendered.should have_selector("a", "data-method" => "put",
+            :href => admin_project_description_path(@project, @description, :order => :up))
+        rendered.should have_selector("a", "data-method" => "put",
+            :href => admin_project_description_path(@project, @description, :order => :down))
+        rendered.should have_selector("a", "data-method" => "put",
+            :href => admin_project_description_path(@project, @description, :order => :bottom))
+        end
+
       it "shows link to destroy description" do
         render
         rendered.should have_selector("a", "data-method" => "delete",
@@ -80,8 +91,6 @@ describe "admin/projects/edit.html.haml" do
         form.should have_selector("textarea", :name => "description[text_ru]")
         form.should have_selector("input", :type => "checkbox",
                                   :name => "description[enabled]")
-        form.should have_selector("input", :type => "text",
-                                  :name => "description[show_order]")
         form.should have_selector("input", :type => "submit")
       end
     end
@@ -102,8 +111,6 @@ describe "admin/projects/edit.html.haml" do
         form.should have_selector("textarea", :name => "description[text_ru]")
         form.should have_selector("input", :type => "checkbox",
                                   :name => "description[enabled]")
-        form.should have_selector("input", :type => "text",
-                                  :name => "description[show_order]")
         form.should have_selector("input", :type => "submit")
       end
     end

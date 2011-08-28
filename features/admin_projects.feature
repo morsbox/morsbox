@@ -95,12 +95,6 @@ Feature: manage projects
     When I follow "Выкл." within xpath //tr[.//text()="Черешня"]
     Then I should see "Вкл." within xpath //tr[.//text()="Черешня"]
 
-  Scenario: changing show order of projects
-    Given I am on the admin projects page
-    When I fill in "project_show_order" with "1" within xpath //tr[.//text()="Черешня"]
-    And I submit edit form for project "Черешня"
-    Then the "project_show_order" field should contain "1" within xpath //tr[.//text()="Черешня"]
-
   Scenario: deleting project
     Given I am on the admin projects page
     When I follow "Удалить" within xpath //tr[.//text()="Черешня"]
