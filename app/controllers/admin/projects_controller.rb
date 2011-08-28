@@ -3,7 +3,8 @@ class Admin::ProjectsController < Admin::IndexController
   
   def index
     @admin_sections = Section.all
-    section = Section.find_by_id params[:section_id]
+    session[:section_id] = params[:section_id] if params[:section_id]
+    section = Section.find_by_id session[:section_id]
     if section
       @projects = section.projects
     else
@@ -13,7 +14,9 @@ class Admin::ProjectsController < Admin::IndexController
   
   def new
     @admin_sections = Section.all
-    @project = Project.new flash[:project]
+    options = session[:section_id] ? {:section_id => session[:section_id]} : {}
+    options.merge! flash[:project] if flash[:project]
+    @project = Project.new options
   end
   
   def create

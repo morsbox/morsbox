@@ -1,7 +1,7 @@
 #content.wide
   %h1= t.project.manager
   = form_tag admin_projects_path, :method => :get, :id => :section_filter_form do
-    = select_tag :section_id, options_for_select([["---",nil]]+@admin_sections.map{ |s| [s.name, s.id]}, params[:section_id])
+    = select_tag :section_id, options_for_select([["---",nil]]+@admin_sections.map{ |s| [s.name, s.id]}, session[:section_id])
     = submit_tag "", :class => :hidden
   = link_to t.project.new, new_admin_project_path, :id => "new_project"
   %table
