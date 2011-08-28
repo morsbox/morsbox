@@ -14,10 +14,5 @@ describe Description do
     it "doesn't return disabled descriptions"do
       Description.enabled.should_not include(@disabled_description)
     end
-    
-    it "returns descriptions ordered" do
-      @second_description = Factory :description
-      Description.enabled.should == [@second_description,@description]
-    end
   end
 end

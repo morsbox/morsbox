@@ -18,11 +18,6 @@ describe Section do
     it "doesn't return disabled sections"do
       Section.enabled.should_not include(@disabled_section)
     end
-    
-    it "returns sections ordered" do
-      @second_section = Factory  :section
-      Section.enabled.should == [@second_section,@section]
-    end
   end
   
   describe "#projects" do

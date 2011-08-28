@@ -18,11 +18,6 @@ describe Project do
     it "doesn't return disabled projects"do
       Project.enabled.should_not include(@disabled_project)
     end
-    
-    it "returns projects ordered" do
-      @second_project = Factory :project
-      Project.enabled.should == [@second_project,@project]
-    end
   end
   
   describe "#descriptions" do

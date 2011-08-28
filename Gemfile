@@ -3,7 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.10'
 gem 'rake', '0.8.7'         # remove this line when rails 3.1
 gem 'mysql2', '= 0.2.7'     # version needed for rails 3.0
-gem 'acts_as_list'
+# There was bug with default scopes, wait for version bumping.
+gem 'acts_as_list', :git => "git://github.com/swanandp/acts_as_list.git"
 
 gem 'jquery-rails', '>= 0.2.6'
 gem 'haml'
