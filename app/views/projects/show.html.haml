@@ -3,5 +3,5 @@
   - @project.descriptions.enabled.each do |description|
     - if description.image_file_name
       .image_container= image_tag description.image.url
-    - if description.text
+    - unless description.text.is_a? R18n::Untranslated
       .description_container!= description.text
