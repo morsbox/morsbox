@@ -143,6 +143,34 @@ a.dialog_open {
   cursor: pointer;
 }
 
+a.facebook_btn, a.twitter_btn {
+  display:block;
+  float:left;
+  height: 32px;
+  width: 32px;
+  margin-right:8px;
+}
+
+a.facebook_btn {
+  background: url('/images/mors_contact_fb_1.png');
+}
+
+a.facebook_btn:hover {
+  background: url('/images/mors_contact_fb_2.png');
+}
+
+a.twitter_btn {
+  background: url('/images/mors_contact_tw_1.png');
+}
+
+a.twitter_btn:hover {
+  background: url('/images/mors_contact_tw_2.png');
+}
+
+form.contact_new {
+  margin-top:15px;
+}
+
 /* admin */
 span.show_order {
   color:#333;
