@@ -80,11 +80,11 @@ devise:
     sign_in: Vstup do administrátorské zóny
 
 menu:
-    contacts: kontakty
+    contacts: Kontakty
 
 pages:
     not_found: Stránka není nalezena
-	
+
 project:
     back: Zpět k seznamu projektů
     destroyed_successfully: Projekt je vymazan!

@@ -80,7 +80,7 @@ devise:
     sign_in: Sign in admin zone
 
 menu:
-    contacts: contacts
+    contacts: Contacts
 
 pages:
     not_found: Page not found

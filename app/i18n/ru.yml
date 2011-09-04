@@ -80,7 +80,7 @@ devise:
     sign_in: Вход в администраторскую зону
 
 menu:
-    contacts: контакты
+    contacts: Контакты
 
 pages:
     not_found: Страница не найдена
