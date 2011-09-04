@@ -7,4 +7,4 @@
     - @static_blocks.each do |static_block|
       %tr
         %td= link_to static_block.name, edit_admin_static_block_path(static_block)
-        %td= link_to t.admin.delete, admin_static_block_path(static_block), :method => :delete, :confirm => t.admin.delete_confirmation
+        %td= link_to image_tag("del.png"), admin_static_block_path(static_block), :method => :delete, :confirm => t.admin.delete_confirmation
