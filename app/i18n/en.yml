@@ -58,6 +58,7 @@ admin:
     projects: Projects
     sections: Sections
     statics: Static blocks
+    time: Created / Updated
 
 contacts:
     message_sent: Your message was sent

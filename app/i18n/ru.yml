@@ -58,6 +58,7 @@ admin:
     projects: Проекты
     sections: Разделы
     statics: Блоки статики
+    time: Создан / изменен
 
 contacts:
     message_sent: Ваше сообщение было отправлено

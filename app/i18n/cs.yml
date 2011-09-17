@@ -47,7 +47,7 @@ activerecord:
 
 admin:
     actions: Činy
-    apply: Použít 	 
+    apply: Použít
     delete: Vymazat 
     delete_confirmation: Jsou jistí?
     disabled: Vypínání
@@ -58,6 +58,7 @@ admin:
     projects: Projekt
     sections: Rubriky
     statics: Stálé bloky
+    time: Vytvořeno / Aktualizováno
 
 contacts:
     message_sent: Váše oznámení bylo odeslané 

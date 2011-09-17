@@ -8,6 +8,7 @@
       %th= t.description.image
       %th= t.description.text
       %th= t.admin.actions
+      %th= t.admin.time
     - @descriptions.each do |description|
       %tr
         %td
@@ -18,6 +19,10 @@
           = link_to_toggle [@project, description]
           = sort_links [@project, description]
           = link_to image_tag("del.png"), admin_project_description_path(@project, description), :method => :delete, :confirm => t.admin.delete_confirmation
+        %td
+          = l description.created_at.to_date, :format => :long
+          = " / "
+          = l description.updated_at.to_date, :format => :long
 
 #dialog_new_description.dialog_description
   = render "admin/descriptions/form", :description => Description.new

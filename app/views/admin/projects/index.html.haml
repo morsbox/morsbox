@@ -9,6 +9,7 @@
       %th= t.admin.name
       %th= t.project.section
       %th= t.admin.actions
+      %th= t.admin.time
     - @projects.each do |project|
       %tr
         %td= link_to project.name, edit_admin_project_path(project)
@@ -18,3 +19,7 @@
           = link_to_toggle project
           = sort_links project
           = link_to image_tag("del.png"), admin_project_path(project), :method => :delete, :confirm => t.admin.delete_confirmation
+        %td
+          = l project.created_at.to_date, :format => :long
+          = " / "
+          = l project.updated_at.to_date, :format => :long

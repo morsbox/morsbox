@@ -5,6 +5,7 @@
     %tr
       %th= t.admin.name
       %th= t.admin.actions
+      %th= t.admin.time
     - @admin_sections.each do |section|
       %tr
         %td= link_to section.name, edit_admin_section_path(section)
@@ -12,3 +13,7 @@
           = link_to_toggle section
           = sort_links section
           = link_to image_tag("del.png"), admin_section_path(section), :method => :delete, :confirm => t.admin.delete_confirmation
+        %td
+          = l section.created_at.to_date, :format => :long
+          = " / "
+          = l section.updated_at.to_date, :format => :long
