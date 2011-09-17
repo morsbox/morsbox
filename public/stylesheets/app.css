@@ -119,7 +119,7 @@ li.separated {
 
 #content.home {
   min-height: 750px;
-  background: url('/images/mors_glass.jpg') top 347px right 190px no-repeat;
+  background: url('/images/mors_glass.jpg') 80% 347px no-repeat;
 }
 
 /* elements */
