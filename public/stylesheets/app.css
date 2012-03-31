@@ -25,10 +25,10 @@ div#container {
   max-width: 1600px;
   margin: 0 auto;
   min-height: 100%;
-  
-  -o-transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
+
+  -o-transform: rotate(10deg);
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2)
 }
 
