@@ -1,9 +1,3 @@
-* {
-  -o-transform: rotate(2deg);
-  -webkit-transform: rotate(2deg);
-  -moz-transform: rotate(2deg);
-}
-
 html {
   height: 100%;
 }
