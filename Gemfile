@@ -10,6 +10,7 @@ gem 'jquery-rails', '>= 0.2.6'
 gem 'haml'
 
 gem 'capistrano'
+gem 'unicorn'
 
 # Gem gives easy translating helpers and translates models
 gem 'r18n-rails'
