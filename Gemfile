@@ -26,19 +26,16 @@ gem 'paperclip', '~> 2.3'
 # Magic gem for parsing and building XML and HTML
 # gem 'nokogiri'
 
-
 # Testing gems
-group :development, :test do
-  gem "rspec-rails"
-  # until bugfix with :to_ary not incuded into gem:
-  gem "rspec-mocks", :git => "git://github.com/rspec/rspec-mocks.git"
-  gem "cucumber-rails"
-  gem 'webrat'
-  gem 'capybara', "= 1.0.0.beta1"   # remove this line when rails 3.1
-end
-
-group :test do
-  gem 'factory_girl_rails', "~> 1.1.0"
-  gem 'database_cleaner'
-  gem 'email_spec'
-end
+#group :development, :test do
+#  gem "rspec-rails"
+#  gem "cucumber-rails"
+#  gem 'webrat'
+#  gem 'capybara', "= 1.0.0.beta1"   # remove this line when rails 3.1
+#end
+#
+#group :test do
+#  gem 'factory_girl_rails'
+#  gem 'database_cleaner'
+#  gem 'email_spec'
+#end
